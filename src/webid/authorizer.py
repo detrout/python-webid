@@ -70,7 +70,7 @@ class DirectTrust(object):
             result = profile.graph.query(ask_query)
             return result.__iter__().next()
         except URIisNotReachable as ex:
-            logger.debug(ex)
+            logger.warning(ex)
             return False
     
     @property 
@@ -113,7 +113,7 @@ class TransitiveTrust(DirectTrust):
             logger.debug("Friends of %s are %s"%(profile.uri,friends))
             return friends
         except URIisNotReachable as ex:
-            logger.debug(ex)
+            logger.warning(ex)
             return []
         
     @property
