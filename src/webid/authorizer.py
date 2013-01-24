@@ -5,10 +5,22 @@ Created on Jan 22, 2013
 '''
 
 from fetcher import WebIDLoader
+from rdflib import URIRef
 import constants
 import logging
 logger = logging.getLogger(name=__name__)
 
+
+class URIisNotReachable(Exception):
+    """
+    stub.
+    The links may be broken, or any other problem that leads to an invalid response
+    """
+    pass
+
+
+def is_profile_reachable(profile):
+    return (hasattr(profile,'ok') and profile.ok)
 
 class DirectTrust(object):
     """
@@ -33,9 +45,12 @@ class DirectTrust(object):
         """
         Loads the own profile
         """
-        if not (hasattr(profile,'ok') and profile.ok):
+        if not is_profile_reachable(profile):
             profile.get()
-            profile.parse(None) #We are not sure about the format
+            if is_profile_reachable(profile): # GET might not be able to fetch any data
+                profile.parse(None) #We are not sure about the format
+            else:
+                raise URIisNotReachable("URI:%s is not reachable."%profile.uri) 
             
         
     def check_for_link(self,profile, friend_uri, self_link=True):
@@ -47,12 +62,16 @@ class DirectTrust(object):
         # we assume that people are friends of each other
         if(self_link & (profile.uri == friend_uri)):
             logger.debug("The person itself is being check for friendship")
-            return True         
-        self.load_the_graph(profile)   
-        ask_query = constants.KNOWS_CHECK.format(target_uri=friend_uri)    
-        logger.debug("ASK_QUERY = \n%s"%ask_query)
-        result = profile.graph.query(ask_query)
-        return result.__iter__().next()
+            return True   
+        try:      
+            self.load_the_graph(profile)   
+            ask_query = constants.KNOWS_CHECK.format(target_uri=friend_uri)    
+            #logger.debug("ASK_QUERY = \n%s"%ask_query)
+            result = profile.graph.query(ask_query)
+            return result.__iter__().next()
+        except URIisNotReachable as ex:
+            logger.debug(ex)
+            return False
     
     @property 
     def is_trusted(self):
@@ -61,7 +80,7 @@ class DirectTrust(object):
         """
         return self.check_for_link(self.own_profile,self.san_uri)
     
-        
+
         
     
 
@@ -76,9 +95,7 @@ class TransitiveTrust(DirectTrust):
         super(TransitiveTrust,self).__init__(SAN_URI,OWN_URI)
         # Supplicant is the requester device
         self.supplicant_profile =  WebIDLoader(SAN_URI)
-        self.supplicant_owners = self.fetch_friends(self.supplicant_profile)
-        # Authrorizer owner may have a direct link to supplicant device
-        self.supplicant_owners.append(SAN_URI)  
+        self.supplicant_owners = self.fetch_friends(self.supplicant_profile) 
         
         # Authorizer is the device that runs this code
         self.authorizer_profile = WebIDLoader(OWN_URI)
@@ -89,11 +106,15 @@ class TransitiveTrust(DirectTrust):
         Returns a LIST of friends, Friends are defined with foaf:knows relations
         Gets a WebIDLoader as profile
         """
-        self.load_the_graph(profile)
-        res = profile.graph.query(constants.FIND_FRIENDS)
-        friends = map(lambda x: x[0],res)
-        logger.debug("Friends of %s are %s"%(profile.uri,friends))
-        return friends
+        try:
+            self.load_the_graph(profile)
+            res = profile.graph.query(constants.FIND_FRIENDS)
+            friends = map(lambda x: x[0],res)
+            logger.debug("Friends of %s are %s"%(profile.uri,friends))
+            return friends
+        except URIisNotReachable as ex:
+            logger.debug(ex)
+            return []
         
     @property
     def is_trusted(self):
@@ -105,9 +126,11 @@ class TransitiveTrust(DirectTrust):
                 continue
             auth_friends = self.fetch_friends(auth_profile)
             # find intersection 
-            common_friends = filter(lambda x: x in self.supplicant_owners, auth_friends)
-            logger.debug("Common friends for auth:%s and supplicant owners are %s "%
-                         (auth_owner,common_friends ))
+            #  we are adding auth owner to the list since there may be a common owner. Auth owner can be the
+            # owner of both devices.
+            common_friends = filter(lambda x: x in self.supplicant_owners, auth_friends+[auth_owner]) 
+            logger.debug("Common friends for auth:%s \nsupplicant owners %s \nare: %s "%
+                         (auth_owner,self.supplicant_owners,common_friends ))
             for common in common_friends:
                 common_profile = WebIDLoader(common)
                 # Also check whether 

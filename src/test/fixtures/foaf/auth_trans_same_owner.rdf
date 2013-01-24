@@ -17,7 +17,8 @@
         <cert:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#int">65537</cert:exponent>
       </cert:RSAPublicKey>
     </cert:key>
-
+	
+	<foaf:knows rdf:resource="http://localhost:3000/fixtures/foaf/dummy.rdf"/>
     <foaf:knows rdf:resource="http://localhost:3000/fixtures/foaf/auth_trans_both_owner.rdf"/>
   </foaf:Person>
 

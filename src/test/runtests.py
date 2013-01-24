@@ -2601,6 +2601,9 @@ class DictImporter(object):
         return res
 
 if __name__ == "__main__":
+    print """To run the tests you should run a http server inside the TEST folder 
+    serving at 3000 port, like: python -m SimpleHTTPServer 3000
+    """
     if sys.version_info >= (3, 0):
         exec("def do_exec(co, loc): exec(co, loc)\n")
         import pickle

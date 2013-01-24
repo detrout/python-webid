@@ -22,6 +22,14 @@ class TestAuthorizer():
         dt =  DirectTrust(supp_uri, auth_uri)
         assert dt.is_trusted
     
+    def test_direct_authentication_same_owner(self):
+        """
+        Same person owns the two device and person's own certificate is in the devices
+        """
+        auth_uri = "%sfixtures/foaf/authenticator_direct.rdf"%TEST_SERVER
+        dt =  DirectTrust(auth_uri, auth_uri)
+        assert dt.is_trusted
+    
     def test_direct_authentication_fail(self):
         """
         Users' certificates are in the machines however, guys don't know each other
@@ -31,7 +39,7 @@ class TestAuthorizer():
         dt =  DirectTrust(supp_uri, auth_uri)
         assert not dt.is_trusted
     
-    def test_transitive_authetication_success(self):
+    def test_transitive_authentication_success(self):
         """
         Both devices have 3 owners and their 2nd owners know each other
         """
@@ -40,16 +48,17 @@ class TestAuthorizer():
         tt = TransitiveTrust(supp_uri, auth_uri)
         assert tt.is_trusted
         
-    def test_transitive_authetication_no_common(self):
+    def test_transitive_authentication_no_common(self):
         """
-        There is no common auth_trans_no_common is modified from auth_trans without auth_trans_owner2
+        There is no common auth_trans_no_common is modified from auth_trans 
+        without auth_trans_owner2
         """
         auth_uri = "%sfixtures/foaf/auth_trans_no_common.rdf"%TEST_SERVER
         supp_uri = "%sfixtures/foaf/supp_trans.rdf"%TEST_SERVER
         tt = TransitiveTrust(supp_uri, auth_uri)
         assert not tt.is_trusted
         
-    def test_transitive_authetication_same_owner(self):
+    def test_transitive_authentication_same_owner(self):
         """
         Owner is the same for both devices
         """

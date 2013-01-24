@@ -19,7 +19,6 @@
     </cert:key>
 
     <foaf:knows rdf:resource="http://localhost:3000/fixtures/foaf/auth_trans_both_owner.rdf"/>
-    <foaf:knows rdf:resource="http://localhost:3000/fixtures/foaf/dummy.rdf"/>
   </foaf:Person>
 
   <foaf:PersonalProfileDocument rdf:about="http://localhost:3000/fixtures/foaf/supp_trans_same_owner.rdf">
