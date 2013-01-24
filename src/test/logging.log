@@ -1,0 +1,1371 @@
+INFO:rdflib:version: 3.2.3
+DEBUG:webid.fetcher:loading webid: http://localhost:3000//fixtures/foaf/authenticator_direct.rdf
+DEBUG:webid.fetcher:accept_header: None
+DEBUG:webid.fetcher:using all understood formats
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (1): localhost
+DEBUG:requests.packages.urllib3.connectionpool:"GET //fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+DEBUG:webid.fetcher:successful URI dereference for uri http://localhost:3000//fixtures/foaf/authenticator_direct.rdf
+DEBUG:webid.fetcher:content-type: application/rdf+xml
+DEBUG:webid.fetcher:saving state...
+INFO:webid.fetcher:successfully got content for uri http://localhost:3000//fixtures/foaf/authenticator_direct.rdf
+DEBUG:webid.fetcher:loading webid: http://localhost:3000//fixtures/foaf/authenticator_direct_fail.rdf
+DEBUG:webid.fetcher:accept_header: None
+DEBUG:webid.fetcher:using all understood formats
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (1): localhost
+DEBUG:requests.packages.urllib3.connectionpool:"GET //fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+DEBUG:webid.fetcher:successful URI dereference for uri http://localhost:3000//fixtures/foaf/authenticator_direct_fail.rdf
+DEBUG:webid.fetcher:content-type: application/rdf+xml
+DEBUG:webid.fetcher:saving state...
+INFO:webid.fetcher:successfully got content for uri http://localhost:3000//fixtures/foaf/authenticator_direct_fail.rdf
+INFO:rdflib:version: 3.2.3
+DEBUG:webid.fetcher:loading webid: http://localhost:3000//fixtures/foaf/authenticator_direct.rdf
+DEBUG:webid.fetcher:accept_header: None
+DEBUG:webid.fetcher:using all understood formats
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (1): localhost
+DEBUG:requests.packages.urllib3.connectionpool:"GET //fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+DEBUG:webid.fetcher:successful URI dereference for uri http://localhost:3000//fixtures/foaf/authenticator_direct.rdf
+DEBUG:webid.fetcher:content-type: application/rdf+xml
+DEBUG:webid.fetcher:saving state...
+INFO:webid.fetcher:successfully got content for uri http://localhost:3000//fixtures/foaf/authenticator_direct.rdf
+DEBUG:webid.authorizer:ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000//fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+DEBUG:webid.authorizer:Are they friends:False
+DEBUG:webid.fetcher:loading webid: http://localhost:3000//fixtures/foaf/authenticator_direct_fail.rdf
+DEBUG:webid.fetcher:accept_header: None
+DEBUG:webid.fetcher:using all understood formats
+INFO:requests.packages.urllib3.connectionpool:Starting new HTTP connection (1): localhost
+DEBUG:requests.packages.urllib3.connectionpool:"GET //fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+DEBUG:webid.fetcher:successful URI dereference for uri http://localhost:3000//fixtures/foaf/authenticator_direct_fail.rdf
+DEBUG:webid.fetcher:content-type: application/rdf+xml
+DEBUG:webid.fetcher:saving state...
+INFO:webid.fetcher:successfully got content for uri http://localhost:3000//fixtures/foaf/authenticator_direct_fail.rdf
+DEBUG:webid.authorizer:ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000//fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+DEBUG:webid.authorizer:Are they friends:False
+2013-01-23 14:35:57,738 <module> INFO version: 3.2.3
+2013-01-23 14:35:57,761 get DEBUG loading webid: http://localhost:3000//fixtures/foaf/authenticator_direct.rdf
+2013-01-23 14:35:57,761 get DEBUG accept_header: None
+2013-01-23 14:35:57,761 get DEBUG using all understood formats
+2013-01-23 14:35:57,773 _new_conn INFO Starting new HTTP connection (1): localhost
+2013-01-23 14:35:57,775 _make_request DEBUG "GET //fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+2013-01-23 14:35:57,775 get DEBUG successful URI dereference for uri http://localhost:3000//fixtures/foaf/authenticator_direct.rdf
+2013-01-23 14:35:57,776 get DEBUG content-type: application/rdf+xml
+2013-01-23 14:35:57,776 get DEBUG saving state...
+2013-01-23 14:35:57,776 get INFO successfully got content for uri http://localhost:3000//fixtures/foaf/authenticator_direct.rdf
+2013-01-23 14:35:57,785 __check_for_link DEBUG ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000//fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 14:35:58,246 __check_for_link DEBUG Are they friends:False
+2013-01-23 14:35:58,270 get DEBUG loading webid: http://localhost:3000//fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 14:35:58,271 get DEBUG accept_header: None
+2013-01-23 14:35:58,271 get DEBUG using all understood formats
+2013-01-23 14:35:58,271 _new_conn INFO Starting new HTTP connection (1): localhost
+2013-01-23 14:35:58,272 _make_request DEBUG "GET //fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+2013-01-23 14:35:58,273 get DEBUG successful URI dereference for uri http://localhost:3000//fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 14:35:58,273 get DEBUG content-type: application/rdf+xml
+2013-01-23 14:35:58,274 get DEBUG saving state...
+2013-01-23 14:35:58,274 get INFO successfully got content for uri http://localhost:3000//fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 14:35:58,279 __check_for_link DEBUG ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000//fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 14:35:58,281 __check_for_link DEBUG Are they friends:False
+2013-01-23 14:54:05,752 (<module>) INFO: version: 3.2.3
+2013-01-23 14:54:05,775 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 14:54:05,775 (get) DEBUG: accept_header: None
+2013-01-23 14:54:05,775 (get) DEBUG: using all understood formats
+2013-01-23 14:54:05,783 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 14:54:05,785 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+2013-01-23 14:54:05,786 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 14:54:05,787 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 14:54:05,787 (get) DEBUG: saving state...
+2013-01-23 14:54:05,787 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 14:54:05,797 (__check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 14:54:06,259 (__check_for_link) DEBUG: Are they friends:True
+2013-01-23 14:54:06,261 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 14:54:06,261 (get) DEBUG: accept_header: None
+2013-01-23 14:54:06,261 (get) DEBUG: using all understood formats
+2013-01-23 14:54:06,262 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 14:54:06,263 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+2013-01-23 14:54:06,263 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 14:54:06,263 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 14:54:06,263 (get) DEBUG: saving state...
+2013-01-23 14:54:06,263 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 14:54:06,268 (__check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 14:54:06,270 (__check_for_link) DEBUG: Are they friends:False
+2013-01-23 15:13:03,064 (<module>) INFO: version: 3.2.3
+2013-01-23 15:13:03,086 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:13:03,087 (get) DEBUG: accept_header: None
+2013-01-23 15:13:03,087 (get) DEBUG: using all understood formats
+2013-01-23 15:13:03,095 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:13:03,097 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+2013-01-23 15:13:03,098 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:13:03,098 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:13:03,098 (get) DEBUG: saving state...
+2013-01-23 15:13:03,099 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:13:03,127 (__check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:13:03,583 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:13:03,583 (get) DEBUG: accept_header: None
+2013-01-23 15:13:03,583 (get) DEBUG: using all understood formats
+2013-01-23 15:13:03,584 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:13:03,585 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+2013-01-23 15:13:03,585 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:13:03,585 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:13:03,586 (get) DEBUG: saving state...
+2013-01-23 15:13:03,586 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:13:03,590 (__check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:22:04,896 (<module>) INFO: version: 3.2.3
+2013-01-23 15:22:04,919 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:22:04,919 (get) DEBUG: accept_header: None
+2013-01-23 15:22:04,919 (get) DEBUG: using all understood formats
+2013-01-23 15:22:04,928 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:22:04,930 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+2013-01-23 15:22:04,931 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:22:04,931 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:22:04,931 (get) DEBUG: saving state...
+2013-01-23 15:22:04,932 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:22:04,943 (__check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:22:05,393 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:22:05,393 (get) DEBUG: accept_header: None
+2013-01-23 15:22:05,393 (get) DEBUG: using all understood formats
+2013-01-23 15:22:05,394 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:22:05,395 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+2013-01-23 15:22:05,395 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:22:05,395 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:22:05,395 (get) DEBUG: saving state...
+2013-01-23 15:22:05,395 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:22:05,400 (__check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:28:11,904 (<module>) INFO: version: 3.2.3
+2013-01-23 15:28:11,927 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:28:11,927 (get) DEBUG: accept_header: None
+2013-01-23 15:28:11,927 (get) DEBUG: using all understood formats
+2013-01-23 15:28:11,935 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:28:11,937 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+2013-01-23 15:28:11,938 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:28:11,938 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:28:11,939 (get) DEBUG: saving state...
+2013-01-23 15:28:11,939 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:28:11,949 (__check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:28:12,406 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:28:12,407 (get) DEBUG: accept_header: None
+2013-01-23 15:28:12,408 (get) DEBUG: using all understood formats
+2013-01-23 15:28:12,408 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:28:12,409 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+2013-01-23 15:28:12,410 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:28:12,410 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:28:12,410 (get) DEBUG: saving state...
+2013-01-23 15:28:12,410 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:28:12,414 (__check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:29:52,801 (<module>) INFO: version: 3.2.3
+2013-01-23 15:29:52,824 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:29:52,824 (get) DEBUG: accept_header: None
+2013-01-23 15:29:52,824 (get) DEBUG: using all understood formats
+2013-01-23 15:29:52,832 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:29:52,834 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+2013-01-23 15:29:52,835 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:29:52,836 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:29:52,836 (get) DEBUG: saving state...
+2013-01-23 15:29:52,836 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:29:52,846 (__check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:29:53,311 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:29:53,311 (get) DEBUG: accept_header: None
+2013-01-23 15:29:53,312 (get) DEBUG: using all understood formats
+2013-01-23 15:29:53,312 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:29:53,313 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+2013-01-23 15:29:53,314 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:29:53,314 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:29:53,314 (get) DEBUG: saving state...
+2013-01-23 15:29:53,314 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:29:53,319 (__check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:30:13,187 (<module>) INFO: version: 3.2.3
+2013-01-23 15:30:13,209 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:30:13,210 (get) DEBUG: accept_header: None
+2013-01-23 15:30:13,210 (get) DEBUG: using all understood formats
+2013-01-23 15:30:13,218 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:30:13,219 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+2013-01-23 15:30:13,220 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:30:13,220 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:30:13,220 (get) DEBUG: saving state...
+2013-01-23 15:30:13,220 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:30:13,230 (__check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:30:13,677 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:30:13,677 (get) DEBUG: accept_header: None
+2013-01-23 15:30:13,677 (get) DEBUG: using all understood formats
+2013-01-23 15:30:13,678 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:30:13,679 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+2013-01-23 15:30:13,679 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:30:13,679 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:30:13,679 (get) DEBUG: saving state...
+2013-01-23 15:30:13,680 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:30:13,684 (__check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:32:38,697 (<module>) INFO: version: 3.2.3
+2013-01-23 15:32:38,720 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:32:38,720 (get) DEBUG: accept_header: None
+2013-01-23 15:32:38,720 (get) DEBUG: using all understood formats
+2013-01-23 15:32:38,730 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:32:38,732 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+2013-01-23 15:32:38,733 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:32:38,733 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:32:38,734 (get) DEBUG: saving state...
+2013-01-23 15:32:38,734 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:32:38,745 (__check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:32:39,208 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:32:39,208 (get) DEBUG: accept_header: None
+2013-01-23 15:32:39,208 (get) DEBUG: using all understood formats
+2013-01-23 15:32:39,209 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:32:39,210 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+2013-01-23 15:32:39,210 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:32:39,210 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:32:39,210 (get) DEBUG: saving state...
+2013-01-23 15:32:39,210 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:32:39,215 (__check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:35:15,202 (<module>) INFO: version: 3.2.3
+2013-01-23 15:35:31,915 (<module>) INFO: version: 3.2.3
+2013-01-23 15:35:31,966 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:35:31,967 (get) DEBUG: accept_header: None
+2013-01-23 15:35:31,967 (get) DEBUG: using all understood formats
+2013-01-23 15:35:31,975 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:35:31,977 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans.rdf HTTP/1.1" 200 2070
+2013-01-23 15:35:31,977 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:35:31,977 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:35:31,977 (get) DEBUG: saving state...
+2013-01-23 15:35:31,977 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:35:32,447 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:35:32,447 (get) DEBUG: accept_header: None
+2013-01-23 15:35:32,447 (get) DEBUG: using all understood formats
+2013-01-23 15:35:32,448 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:35:32,449 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans.rdf HTTP/1.1" 200 2073
+2013-01-23 15:35:32,449 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:35:32,450 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:35:32,450 (get) DEBUG: saving state...
+2013-01-23 15:35:32,450 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:36:44,263 (<module>) INFO: version: 3.2.3
+2013-01-23 15:36:44,293 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:36:44,293 (get) DEBUG: accept_header: None
+2013-01-23 15:36:44,293 (get) DEBUG: using all understood formats
+2013-01-23 15:36:44,301 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:36:44,303 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+2013-01-23 15:36:44,303 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:36:44,303 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:36:44,303 (get) DEBUG: saving state...
+2013-01-23 15:36:44,303 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:36:44,312 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:36:44,764 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:36:44,764 (get) DEBUG: accept_header: None
+2013-01-23 15:36:44,764 (get) DEBUG: using all understood formats
+2013-01-23 15:36:44,764 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:36:44,765 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+2013-01-23 15:36:44,766 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:36:44,766 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:36:44,766 (get) DEBUG: saving state...
+2013-01-23 15:36:44,766 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:36:44,771 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:36:44,775 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:36:44,775 (get) DEBUG: accept_header: None
+2013-01-23 15:36:44,775 (get) DEBUG: using all understood formats
+2013-01-23 15:36:44,775 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:36:44,776 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans.rdf HTTP/1.1" 200 2070
+2013-01-23 15:36:44,777 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:36:44,777 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:36:44,777 (get) DEBUG: saving state...
+2013-01-23 15:36:44,777 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:36:44,795 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:36:44,795 (get) DEBUG: accept_header: None
+2013-01-23 15:36:44,795 (get) DEBUG: using all understood formats
+2013-01-23 15:36:44,795 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:36:44,797 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans.rdf HTTP/1.1" 200 2073
+2013-01-23 15:36:44,797 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:36:44,797 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:36:44,797 (get) DEBUG: saving state...
+2013-01-23 15:36:44,797 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:36:44,814 (get) DEBUG: loading webid: <http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf>
+2013-01-23 15:36:44,814 (get) DEBUG: accept_header: None
+2013-01-23 15:36:44,814 (get) DEBUG: using all understood formats
+2013-01-23 15:40:41,153 (<module>) INFO: version: 3.2.3
+2013-01-23 15:40:41,176 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:40:41,176 (get) DEBUG: accept_header: None
+2013-01-23 15:40:41,177 (get) DEBUG: using all understood formats
+2013-01-23 15:40:41,187 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:40:41,189 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+2013-01-23 15:40:41,190 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:40:41,191 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:40:41,191 (get) DEBUG: saving state...
+2013-01-23 15:40:41,191 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:40:41,203 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:40:41,656 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:40:41,656 (get) DEBUG: accept_header: None
+2013-01-23 15:40:41,656 (get) DEBUG: using all understood formats
+2013-01-23 15:40:41,657 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:40:41,658 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+2013-01-23 15:40:41,658 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:40:41,659 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:40:41,659 (get) DEBUG: saving state...
+2013-01-23 15:40:41,659 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:40:41,663 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:40:41,667 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:40:41,667 (get) DEBUG: accept_header: None
+2013-01-23 15:40:41,668 (get) DEBUG: using all understood formats
+2013-01-23 15:40:41,668 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:40:41,669 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans.rdf HTTP/1.1" 200 2070
+2013-01-23 15:40:41,669 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:40:41,669 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:40:41,670 (get) DEBUG: saving state...
+2013-01-23 15:40:41,670 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:40:41,686 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/supp_trans.rdf are [u'<http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf>', u'<http://localhost:3000/fixtures/foaf/supp_trans_owner3.rdf>', u'<http://localhost:3000/fixtures/foaf/supp_trans_owner1.rdf>']
+2013-01-23 15:40:41,687 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:40:41,687 (get) DEBUG: accept_header: None
+2013-01-23 15:40:41,687 (get) DEBUG: using all understood formats
+2013-01-23 15:40:41,687 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:40:41,688 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans.rdf HTTP/1.1" 200 2073
+2013-01-23 15:40:41,689 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:40:41,689 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:40:41,689 (get) DEBUG: saving state...
+2013-01-23 15:40:41,689 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:40:41,706 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans.rdf are [u'<http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf>', u'<http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf>', u'<http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf>']
+2013-01-23 15:40:41,706 (get) DEBUG: loading webid: <http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf>
+2013-01-23 15:40:41,706 (get) DEBUG: accept_header: None
+2013-01-23 15:40:41,706 (get) DEBUG: using all understood formats
+2013-01-23 15:42:36,811 (<module>) INFO: version: 3.2.3
+2013-01-23 15:42:36,834 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:42:36,834 (get) DEBUG: accept_header: None
+2013-01-23 15:42:36,834 (get) DEBUG: using all understood formats
+2013-01-23 15:42:36,844 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:42:36,846 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+2013-01-23 15:42:36,847 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:42:36,847 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:42:36,848 (get) DEBUG: saving state...
+2013-01-23 15:42:36,848 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:42:36,858 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:42:37,322 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:42:37,322 (get) DEBUG: accept_header: None
+2013-01-23 15:42:37,322 (get) DEBUG: using all understood formats
+2013-01-23 15:42:37,323 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:42:37,324 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+2013-01-23 15:42:37,324 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:42:37,324 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:42:37,325 (get) DEBUG: saving state...
+2013-01-23 15:42:37,325 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:42:37,329 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:42:37,333 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:42:37,333 (get) DEBUG: accept_header: None
+2013-01-23 15:42:37,334 (get) DEBUG: using all understood formats
+2013-01-23 15:42:37,334 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:42:37,335 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans.rdf HTTP/1.1" 200 2070
+2013-01-23 15:42:37,335 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:42:37,335 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:42:37,336 (get) DEBUG: saving state...
+2013-01-23 15:42:37,336 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:42:37,353 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/supp_trans.rdf are []
+2013-01-23 15:42:37,353 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:42:37,353 (get) DEBUG: accept_header: None
+2013-01-23 15:42:37,353 (get) DEBUG: using all understood formats
+2013-01-23 15:42:37,354 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:42:37,355 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans.rdf HTTP/1.1" 200 2073
+2013-01-23 15:42:37,355 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:42:37,355 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:42:37,355 (get) DEBUG: saving state...
+2013-01-23 15:42:37,355 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:42:37,371 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans.rdf are []
+2013-01-23 15:48:05,472 (<module>) INFO: version: 3.2.3
+2013-01-23 15:48:05,495 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:48:05,495 (get) DEBUG: accept_header: None
+2013-01-23 15:48:05,495 (get) DEBUG: using all understood formats
+2013-01-23 15:48:05,503 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:48:05,505 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+2013-01-23 15:48:05,506 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:48:05,506 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:48:05,507 (get) DEBUG: saving state...
+2013-01-23 15:48:05,507 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:48:05,523 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:48:05,978 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:48:05,978 (get) DEBUG: accept_header: None
+2013-01-23 15:48:05,978 (get) DEBUG: using all understood formats
+2013-01-23 15:48:05,979 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:48:05,980 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+2013-01-23 15:48:05,980 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:48:05,980 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:48:05,981 (get) DEBUG: saving state...
+2013-01-23 15:48:05,981 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:48:05,985 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:48:05,989 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:48:05,989 (get) DEBUG: accept_header: None
+2013-01-23 15:48:05,990 (get) DEBUG: using all understood formats
+2013-01-23 15:48:05,990 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:48:05,991 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans.rdf HTTP/1.1" 200 2070
+2013-01-23 15:48:05,991 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:48:05,992 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:48:05,992 (get) DEBUG: saving state...
+2013-01-23 15:48:05,992 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:48:06,009 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/supp_trans.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner1.rdf')]
+2013-01-23 15:48:06,009 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:48:06,009 (get) DEBUG: accept_header: None
+2013-01-23 15:48:06,009 (get) DEBUG: using all understood formats
+2013-01-23 15:48:06,009 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:48:06,011 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans.rdf HTTP/1.1" 200 2073
+2013-01-23 15:48:06,011 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:48:06,011 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:48:06,011 (get) DEBUG: saving state...
+2013-01-23 15:48:06,011 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:48:06,028 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf')]
+2013-01-23 15:48:06,054 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 15:48:06,055 (get) DEBUG: accept_header: None
+2013-01-23 15:48:06,055 (get) DEBUG: using all understood formats
+2013-01-23 15:48:06,055 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:48:06,057 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner1.rdf HTTP/1.1" 200 1917
+2013-01-23 15:48:06,057 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 15:48:06,057 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:48:06,057 (get) DEBUG: saving state...
+2013-01-23 15:48:06,057 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 15:48:06,062 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans.rdf> .
+    }
+
+2013-01-23 15:48:06,076 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans.rdf')]
+2013-01-23 15:48:06,076 (is_trusted) DEBUG: Common friends for auth:http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf and supplicant owners are [] 
+2013-01-23 15:48:06,076 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 15:48:06,076 (get) DEBUG: accept_header: None
+2013-01-23 15:48:06,076 (get) DEBUG: using all understood formats
+2013-01-23 15:48:06,077 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:48:06,078 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner3.rdf HTTP/1.1" 200 1922
+2013-01-23 15:48:06,078 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 15:48:06,078 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:48:06,078 (get) DEBUG: saving state...
+2013-01-23 15:48:06,078 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 15:48:06,083 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans.rdf> .
+    }
+
+2013-01-23 15:48:06,096 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans.rdf')]
+2013-01-23 15:48:06,097 (is_trusted) DEBUG: Common friends for auth:http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf and supplicant owners are [] 
+2013-01-23 15:48:06,097 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 15:48:06,097 (get) DEBUG: accept_header: None
+2013-01-23 15:48:06,097 (get) DEBUG: using all understood formats
+2013-01-23 15:48:06,097 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:48:06,098 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner2.rdf HTTP/1.1" 200 2008
+2013-01-23 15:48:06,099 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 15:48:06,099 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:48:06,099 (get) DEBUG: saving state...
+2013-01-23 15:48:06,099 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 15:48:06,104 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans.rdf> .
+    }
+
+2013-01-23 15:48:06,117 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans.rdf')]
+2013-01-23 15:48:06,117 (is_trusted) DEBUG: Common friends for auth:http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf and supplicant owners are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf')] 
+2013-01-23 15:48:06,117 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf
+2013-01-23 15:48:06,117 (get) DEBUG: accept_header: None
+2013-01-23 15:48:06,118 (get) DEBUG: using all understood formats
+2013-01-23 15:48:06,118 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:48:06,119 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans_owner2.rdf HTTP/1.1" 200 2000
+2013-01-23 15:48:06,119 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf
+2013-01-23 15:48:06,120 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:48:06,120 (get) DEBUG: saving state...
+2013-01-23 15:48:06,120 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf
+2013-01-23 15:48:06,125 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supp_trans.rdf> .
+    }
+
+2013-01-23 15:48:06,128 (is_trusted) INFO: SUCCESS!: supp owner: http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf <-> auth owner: http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 15:54:16,772 (<module>) INFO: version: 3.2.3
+2013-01-23 15:54:16,796 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:54:16,796 (get) DEBUG: accept_header: None
+2013-01-23 15:54:16,796 (get) DEBUG: using all understood formats
+2013-01-23 15:54:16,807 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:54:16,808 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+2013-01-23 15:54:16,808 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:54:16,809 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:54:16,809 (get) DEBUG: saving state...
+2013-01-23 15:54:16,809 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:54:16,818 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:54:17,286 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:54:17,286 (get) DEBUG: accept_header: None
+2013-01-23 15:54:17,286 (get) DEBUG: using all understood formats
+2013-01-23 15:54:17,287 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:54:17,288 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+2013-01-23 15:54:17,288 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:54:17,288 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:54:17,288 (get) DEBUG: saving state...
+2013-01-23 15:54:17,288 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:54:17,293 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:54:17,297 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:54:17,297 (get) DEBUG: accept_header: None
+2013-01-23 15:54:17,297 (get) DEBUG: using all understood formats
+2013-01-23 15:54:17,298 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:54:17,299 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans.rdf HTTP/1.1" 200 2070
+2013-01-23 15:54:17,299 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:54:17,299 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:54:17,299 (get) DEBUG: saving state...
+2013-01-23 15:54:17,299 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:54:17,316 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/supp_trans.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner1.rdf')]
+2013-01-23 15:54:17,316 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:54:17,316 (get) DEBUG: accept_header: None
+2013-01-23 15:54:17,316 (get) DEBUG: using all understood formats
+2013-01-23 15:54:17,317 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:54:17,318 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans.rdf HTTP/1.1" 200 2073
+2013-01-23 15:54:17,318 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:54:17,318 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:54:17,318 (get) DEBUG: saving state...
+2013-01-23 15:54:17,318 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:54:17,336 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf')]
+2013-01-23 15:54:17,336 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 15:54:17,336 (get) DEBUG: accept_header: None
+2013-01-23 15:54:17,336 (get) DEBUG: using all understood formats
+2013-01-23 15:54:17,337 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:54:17,338 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner1.rdf HTTP/1.1" 200 1917
+2013-01-23 15:54:17,338 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 15:54:17,338 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:54:17,338 (get) DEBUG: saving state...
+2013-01-23 15:54:17,338 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 15:54:17,343 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans.rdf> .
+    }
+
+2013-01-23 15:54:17,357 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans.rdf')]
+2013-01-23 15:54:17,357 (is_trusted) DEBUG: Common friends for auth:http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf and supplicant owners are [] 
+2013-01-23 15:54:17,357 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 15:54:17,357 (get) DEBUG: accept_header: None
+2013-01-23 15:54:17,357 (get) DEBUG: using all understood formats
+2013-01-23 15:54:17,358 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:54:17,359 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner3.rdf HTTP/1.1" 200 1922
+2013-01-23 15:54:17,359 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 15:54:17,359 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:54:17,359 (get) DEBUG: saving state...
+2013-01-23 15:54:17,359 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 15:54:17,364 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans.rdf> .
+    }
+
+2013-01-23 15:54:17,377 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans.rdf')]
+2013-01-23 15:54:17,377 (is_trusted) DEBUG: Common friends for auth:http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf and supplicant owners are [] 
+2013-01-23 15:54:17,377 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 15:54:17,377 (get) DEBUG: accept_header: None
+2013-01-23 15:54:17,377 (get) DEBUG: using all understood formats
+2013-01-23 15:54:17,378 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:54:17,379 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner2.rdf HTTP/1.1" 200 2008
+2013-01-23 15:54:17,379 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 15:54:17,379 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:54:17,379 (get) DEBUG: saving state...
+2013-01-23 15:54:17,379 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 15:54:17,384 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans.rdf> .
+    }
+
+2013-01-23 15:54:17,397 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans.rdf')]
+2013-01-23 15:54:17,397 (is_trusted) DEBUG: Common friends for auth:http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf and supplicant owners are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf')] 
+2013-01-23 15:54:17,397 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf
+2013-01-23 15:54:17,397 (get) DEBUG: accept_header: None
+2013-01-23 15:54:17,397 (get) DEBUG: using all understood formats
+2013-01-23 15:54:17,398 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:54:17,399 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans_owner2.rdf HTTP/1.1" 200 2000
+2013-01-23 15:54:17,399 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf
+2013-01-23 15:54:17,399 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:54:17,399 (get) DEBUG: saving state...
+2013-01-23 15:54:17,399 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf
+2013-01-23 15:54:17,405 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supp_trans.rdf> .
+    }
+
+2013-01-23 15:54:17,407 (is_trusted) INFO: SUCCESS!: supp owner: http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf <-> auth owner: http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 15:54:17,409 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:54:17,409 (get) DEBUG: accept_header: None
+2013-01-23 15:54:17,409 (get) DEBUG: using all understood formats
+2013-01-23 15:54:17,410 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:54:17,411 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans.rdf HTTP/1.1" 200 2070
+2013-01-23 15:54:17,411 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:54:17,411 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:54:17,411 (get) DEBUG: saving state...
+2013-01-23 15:54:17,411 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:54:17,427 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/supp_trans.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner1.rdf')]
+2013-01-23 15:54:17,427 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf
+2013-01-23 15:54:17,427 (get) DEBUG: accept_header: None
+2013-01-23 15:54:17,427 (get) DEBUG: using all understood formats
+2013-01-23 15:54:17,428 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:54:17,429 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_no_common.rdf HTTP/1.1" 200 1982
+2013-01-23 15:54:17,430 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf
+2013-01-23 15:54:17,430 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:54:17,430 (get) DEBUG: saving state...
+2013-01-23 15:54:17,430 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf
+2013-01-23 15:54:17,446 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf')]
+2013-01-23 15:54:17,446 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 15:54:17,447 (get) DEBUG: accept_header: None
+2013-01-23 15:54:17,447 (get) DEBUG: using all understood formats
+2013-01-23 15:54:17,447 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:54:17,448 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner1.rdf HTTP/1.1" 200 1917
+2013-01-23 15:54:17,449 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 15:54:17,449 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:54:17,449 (get) DEBUG: saving state...
+2013-01-23 15:54:17,449 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 15:54:17,454 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf> .
+    }
+
+2013-01-23 15:54:17,456 (is_trusted) DEBUG: Authorizer claims that http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf is its owner but is NOT, skipping...
+2013-01-23 15:54:17,456 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 15:54:17,457 (get) DEBUG: accept_header: None
+2013-01-23 15:54:17,457 (get) DEBUG: using all understood formats
+2013-01-23 15:54:17,457 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:54:17,458 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner3.rdf HTTP/1.1" 200 1922
+2013-01-23 15:54:17,458 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 15:54:17,459 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:54:17,459 (get) DEBUG: saving state...
+2013-01-23 15:54:17,459 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 15:54:17,464 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf> .
+    }
+
+2013-01-23 15:54:17,466 (is_trusted) DEBUG: Authorizer claims that http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf is its owner but is NOT, skipping...
+2013-01-23 15:55:34,243 (<module>) INFO: version: 3.2.3
+2013-01-23 15:55:34,269 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:55:34,269 (get) DEBUG: accept_header: None
+2013-01-23 15:55:34,269 (get) DEBUG: using all understood formats
+2013-01-23 15:55:34,278 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:55:34,280 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+2013-01-23 15:55:34,280 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:55:34,281 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:55:34,281 (get) DEBUG: saving state...
+2013-01-23 15:55:34,282 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 15:55:34,291 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:55:34,741 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:55:34,741 (get) DEBUG: accept_header: None
+2013-01-23 15:55:34,742 (get) DEBUG: using all understood formats
+2013-01-23 15:55:34,743 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:55:34,744 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+2013-01-23 15:55:34,745 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:55:34,746 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:55:34,746 (get) DEBUG: saving state...
+2013-01-23 15:55:34,746 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 15:55:34,752 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 15:55:34,757 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:55:34,757 (get) DEBUG: accept_header: None
+2013-01-23 15:55:34,758 (get) DEBUG: using all understood formats
+2013-01-23 15:55:34,758 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:55:34,759 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans.rdf HTTP/1.1" 200 2070
+2013-01-23 15:55:34,760 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:55:34,760 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:55:34,760 (get) DEBUG: saving state...
+2013-01-23 15:55:34,760 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:55:34,777 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/supp_trans.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner1.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf')]
+2013-01-23 15:55:34,777 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:55:34,777 (get) DEBUG: accept_header: None
+2013-01-23 15:55:34,777 (get) DEBUG: using all understood formats
+2013-01-23 15:55:34,778 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:55:34,779 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans.rdf HTTP/1.1" 200 2073
+2013-01-23 15:55:34,779 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:55:34,779 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:55:34,779 (get) DEBUG: saving state...
+2013-01-23 15:55:34,779 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 15:55:34,795 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf')]
+2013-01-23 15:55:34,795 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 15:55:34,795 (get) DEBUG: accept_header: None
+2013-01-23 15:55:34,796 (get) DEBUG: using all understood formats
+2013-01-23 15:55:34,796 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:55:34,797 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner2.rdf HTTP/1.1" 200 2008
+2013-01-23 15:55:34,797 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 15:55:34,797 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:55:34,797 (get) DEBUG: saving state...
+2013-01-23 15:55:34,798 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 15:55:34,803 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans.rdf> .
+    }
+
+2013-01-23 15:55:34,815 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf')]
+2013-01-23 15:55:34,816 (is_trusted) DEBUG: Common friends for auth:http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf and supplicant owners are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf')] 
+2013-01-23 15:55:34,816 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf
+2013-01-23 15:55:34,816 (get) DEBUG: accept_header: None
+2013-01-23 15:55:34,816 (get) DEBUG: using all understood formats
+2013-01-23 15:55:34,816 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:55:34,817 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans_owner2.rdf HTTP/1.1" 200 2000
+2013-01-23 15:55:34,817 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf
+2013-01-23 15:55:34,818 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:55:34,818 (get) DEBUG: saving state...
+2013-01-23 15:55:34,818 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf
+2013-01-23 15:55:34,823 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supp_trans.rdf> .
+    }
+
+2013-01-23 15:55:34,825 (is_trusted) INFO: SUCCESS!: supp owner: http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf <-> auth owner: http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 15:55:34,827 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:55:34,827 (get) DEBUG: accept_header: None
+2013-01-23 15:55:34,827 (get) DEBUG: using all understood formats
+2013-01-23 15:55:34,828 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:55:34,829 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans.rdf HTTP/1.1" 200 2070
+2013-01-23 15:55:34,829 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:55:34,829 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:55:34,829 (get) DEBUG: saving state...
+2013-01-23 15:55:34,829 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 15:55:34,845 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/supp_trans.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner1.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf')]
+2013-01-23 15:55:34,846 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf
+2013-01-23 15:55:34,846 (get) DEBUG: accept_header: None
+2013-01-23 15:55:34,846 (get) DEBUG: using all understood formats
+2013-01-23 15:55:34,846 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:55:34,847 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_no_common.rdf HTTP/1.1" 200 1982
+2013-01-23 15:55:34,848 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf
+2013-01-23 15:55:34,848 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:55:34,848 (get) DEBUG: saving state...
+2013-01-23 15:55:34,848 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf
+2013-01-23 15:55:34,864 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf')]
+2013-01-23 15:55:34,864 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 15:55:34,864 (get) DEBUG: accept_header: None
+2013-01-23 15:55:34,864 (get) DEBUG: using all understood formats
+2013-01-23 15:55:34,865 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:55:34,866 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner3.rdf HTTP/1.1" 200 2016
+2013-01-23 15:55:34,866 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 15:55:34,866 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:55:34,867 (get) DEBUG: saving state...
+2013-01-23 15:55:34,867 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 15:55:34,872 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf> .
+    }
+
+2013-01-23 15:55:34,885 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans.rdf')]
+2013-01-23 15:55:34,885 (is_trusted) DEBUG: Common friends for auth:http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf and supplicant owners are [] 
+2013-01-23 15:55:34,885 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 15:55:34,885 (get) DEBUG: accept_header: None
+2013-01-23 15:55:34,885 (get) DEBUG: using all understood formats
+2013-01-23 15:55:34,886 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 15:55:34,887 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner1.rdf HTTP/1.1" 200 1917
+2013-01-23 15:55:34,887 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 15:55:34,887 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 15:55:34,887 (get) DEBUG: saving state...
+2013-01-23 15:55:34,887 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 15:55:34,892 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf> .
+    }
+
+2013-01-23 15:55:34,895 (is_trusted) DEBUG: Authorizer claims that http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf is its owner but is NOT, skipping...
+2013-01-23 16:03:07,208 (<module>) INFO: version: 3.2.3
+2013-01-23 16:03:07,232 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 16:03:07,233 (get) DEBUG: accept_header: None
+2013-01-23 16:03:07,233 (get) DEBUG: using all understood formats
+2013-01-23 16:03:07,244 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:03:07,246 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+2013-01-23 16:03:07,246 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 16:03:07,247 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:03:07,247 (get) DEBUG: saving state...
+2013-01-23 16:03:07,248 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 16:03:07,257 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 16:03:07,725 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 16:03:07,725 (get) DEBUG: accept_header: None
+2013-01-23 16:03:07,725 (get) DEBUG: using all understood formats
+2013-01-23 16:03:07,726 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:03:07,727 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+2013-01-23 16:03:07,727 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 16:03:07,727 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:03:07,727 (get) DEBUG: saving state...
+2013-01-23 16:03:07,727 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 16:03:07,732 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 16:03:07,737 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 16:03:07,737 (get) DEBUG: accept_header: None
+2013-01-23 16:03:07,737 (get) DEBUG: using all understood formats
+2013-01-23 16:03:07,738 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:03:07,739 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans.rdf HTTP/1.1" 200 2070
+2013-01-23 16:03:07,739 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 16:03:07,740 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:03:07,740 (get) DEBUG: saving state...
+2013-01-23 16:03:07,740 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 16:03:07,757 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/supp_trans.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner1.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf')]
+2013-01-23 16:03:07,757 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 16:03:07,757 (get) DEBUG: accept_header: None
+2013-01-23 16:03:07,757 (get) DEBUG: using all understood formats
+2013-01-23 16:03:07,758 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:03:07,759 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans.rdf HTTP/1.1" 200 2073
+2013-01-23 16:03:07,759 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 16:03:07,759 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:03:07,759 (get) DEBUG: saving state...
+2013-01-23 16:03:07,759 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 16:03:07,775 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf')]
+2013-01-23 16:03:07,776 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 16:03:07,776 (get) DEBUG: accept_header: None
+2013-01-23 16:03:07,776 (get) DEBUG: using all understood formats
+2013-01-23 16:03:07,776 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:03:07,777 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner2.rdf HTTP/1.1" 200 2008
+2013-01-23 16:03:07,778 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 16:03:07,778 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:03:07,778 (get) DEBUG: saving state...
+2013-01-23 16:03:07,778 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 16:03:07,783 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans.rdf> .
+    }
+
+2013-01-23 16:03:07,795 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf')]
+2013-01-23 16:03:07,796 (is_trusted) DEBUG: Common friends for auth:http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf and supplicant owners are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf')] 
+2013-01-23 16:03:07,796 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf
+2013-01-23 16:03:07,796 (get) DEBUG: accept_header: None
+2013-01-23 16:03:07,796 (get) DEBUG: using all understood formats
+2013-01-23 16:03:07,796 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:03:07,797 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans_owner2.rdf HTTP/1.1" 200 2000
+2013-01-23 16:03:07,798 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf
+2013-01-23 16:03:07,798 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:03:07,798 (get) DEBUG: saving state...
+2013-01-23 16:03:07,798 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf
+2013-01-23 16:03:07,803 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supp_trans.rdf> .
+    }
+
+2013-01-23 16:03:07,806 (is_trusted) INFO: SUCCESS!: supp owner: http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf <-> auth owner: http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 16:03:07,807 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 16:03:07,807 (get) DEBUG: accept_header: None
+2013-01-23 16:03:07,807 (get) DEBUG: using all understood formats
+2013-01-23 16:03:07,808 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:03:07,809 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans.rdf HTTP/1.1" 200 2070
+2013-01-23 16:03:07,810 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 16:03:07,810 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:03:07,811 (get) DEBUG: saving state...
+2013-01-23 16:03:07,811 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 16:03:07,826 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/supp_trans.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner1.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf')]
+2013-01-23 16:03:07,827 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf
+2013-01-23 16:03:07,828 (get) DEBUG: accept_header: None
+2013-01-23 16:03:07,828 (get) DEBUG: using all understood formats
+2013-01-23 16:03:07,829 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:03:07,831 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_no_common.rdf HTTP/1.1" 200 1982
+2013-01-23 16:03:07,831 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf
+2013-01-23 16:03:07,832 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:03:07,832 (get) DEBUG: saving state...
+2013-01-23 16:03:07,833 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf
+2013-01-23 16:03:07,849 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf')]
+2013-01-23 16:03:07,849 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 16:03:07,849 (get) DEBUG: accept_header: None
+2013-01-23 16:03:07,849 (get) DEBUG: using all understood formats
+2013-01-23 16:03:07,850 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:03:07,851 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner3.rdf HTTP/1.1" 200 2016
+2013-01-23 16:03:07,851 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 16:03:07,851 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:03:07,851 (get) DEBUG: saving state...
+2013-01-23 16:03:07,851 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 16:03:07,857 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf> .
+    }
+
+2013-01-23 16:03:07,869 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans.rdf')]
+2013-01-23 16:03:07,869 (is_trusted) DEBUG: Common friends for auth:http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf and supplicant owners are [] 
+2013-01-23 16:03:07,869 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 16:03:07,869 (get) DEBUG: accept_header: None
+2013-01-23 16:03:07,870 (get) DEBUG: using all understood formats
+2013-01-23 16:03:07,870 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:03:07,871 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner1.rdf HTTP/1.1" 200 1917
+2013-01-23 16:03:07,871 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 16:03:07,871 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:03:07,872 (get) DEBUG: saving state...
+2013-01-23 16:03:07,872 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 16:03:07,877 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf> .
+    }
+
+2013-01-23 16:03:07,879 (is_trusted) DEBUG: Authorizer claims that http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf is its owner but is NOT, skipping...
+2013-01-23 16:03:07,880 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans_same_owner.rdf
+2013-01-23 16:03:07,881 (get) DEBUG: accept_header: None
+2013-01-23 16:03:07,881 (get) DEBUG: using all understood formats
+2013-01-23 16:03:07,881 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:03:07,882 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans_same_owner.rdf HTTP/1.1" 200 2015
+2013-01-23 16:03:07,882 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans_same_owner.rdf
+2013-01-23 16:03:07,883 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:03:07,883 (get) DEBUG: saving state...
+2013-01-23 16:03:07,883 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans_same_owner.rdf
+2013-01-23 16:03:07,898 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/supp_trans_same_owner.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/dummy.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_both_owner.rdf')]
+2013-01-23 16:03:07,899 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_same_owner.rdf
+2013-01-23 16:03:07,899 (get) DEBUG: accept_header: None
+2013-01-23 16:03:07,899 (get) DEBUG: using all understood formats
+2013-01-23 16:03:07,899 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:03:07,900 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_same_owner.rdf HTTP/1.1" 200 1939
+2013-01-23 16:03:07,901 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_same_owner.rdf
+2013-01-23 16:03:07,901 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:03:07,901 (get) DEBUG: saving state...
+2013-01-23 16:03:07,901 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_same_owner.rdf
+2013-01-23 16:03:07,916 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_same_owner.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_both_owner.rdf')]
+2013-01-23 16:03:07,916 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_both_owner.rdf
+2013-01-23 16:03:07,916 (get) DEBUG: accept_header: None
+2013-01-23 16:03:07,916 (get) DEBUG: using all understood formats
+2013-01-23 16:03:07,917 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:03:07,918 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_both_owner.rdf HTTP/1.1" 200 2027
+2013-01-23 16:03:07,919 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_both_owner.rdf
+2013-01-23 16:03:07,919 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:03:07,919 (get) DEBUG: saving state...
+2013-01-23 16:03:07,919 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_both_owner.rdf
+2013-01-23 16:03:07,924 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans_same_owner.rdf> .
+    }
+
+2013-01-23 16:03:07,937 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_both_owner.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_same_owner.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_same_owner.rdf')]
+2013-01-23 16:03:07,938 (is_trusted) DEBUG: Common friends for auth:http://localhost:3000/fixtures/foaf/auth_trans_both_owner.rdf and supplicant owners are [] 
+2013-01-23 16:14:46,446 (<module>) INFO: version: 3.2.3
+2013-01-23 16:14:46,473 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 16:14:46,473 (get) DEBUG: accept_header: None
+2013-01-23 16:14:46,473 (get) DEBUG: using all understood formats
+2013-01-23 16:14:46,482 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:14:46,484 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct.rdf HTTP/1.1" 200 1932
+2013-01-23 16:14:46,484 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 16:14:46,485 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:14:46,485 (get) DEBUG: saving state...
+2013-01-23 16:14:46,486 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct.rdf
+2013-01-23 16:14:46,495 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 16:14:46,952 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 16:14:46,952 (get) DEBUG: accept_header: None
+2013-01-23 16:14:46,952 (get) DEBUG: using all understood formats
+2013-01-23 16:14:46,953 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:14:46,954 (_make_request) DEBUG: "GET /fixtures/foaf/authenticator_direct_fail.rdf HTTP/1.1" 200 1846
+2013-01-23 16:14:46,955 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 16:14:46,955 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:14:46,955 (get) DEBUG: saving state...
+2013-01-23 16:14:46,955 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/authenticator_direct_fail.rdf
+2013-01-23 16:14:46,960 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supplicant_direct.rdf> .
+    }
+
+2013-01-23 16:14:46,964 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 16:14:46,964 (get) DEBUG: accept_header: None
+2013-01-23 16:14:46,964 (get) DEBUG: using all understood formats
+2013-01-23 16:14:46,965 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:14:46,966 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans.rdf HTTP/1.1" 200 2070
+2013-01-23 16:14:46,966 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 16:14:46,966 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:14:46,966 (get) DEBUG: saving state...
+2013-01-23 16:14:46,966 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 16:14:46,983 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/supp_trans.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner1.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf')]
+2013-01-23 16:14:46,983 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 16:14:46,984 (get) DEBUG: accept_header: None
+2013-01-23 16:14:46,984 (get) DEBUG: using all understood formats
+2013-01-23 16:14:46,984 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:14:46,985 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans.rdf HTTP/1.1" 200 2073
+2013-01-23 16:14:46,986 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 16:14:46,986 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:14:46,986 (get) DEBUG: saving state...
+2013-01-23 16:14:46,986 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans.rdf
+2013-01-23 16:14:47,002 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf')]
+2013-01-23 16:14:47,002 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 16:14:47,002 (get) DEBUG: accept_header: None
+2013-01-23 16:14:47,003 (get) DEBUG: using all understood formats
+2013-01-23 16:14:47,003 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:14:47,004 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner2.rdf HTTP/1.1" 200 2008
+2013-01-23 16:14:47,004 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 16:14:47,004 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:14:47,005 (get) DEBUG: saving state...
+2013-01-23 16:14:47,005 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 16:14:47,010 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans.rdf> .
+    }
+
+2013-01-23 16:14:47,022 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf')]
+2013-01-23 16:14:47,023 (is_trusted) DEBUG: Common friends for auth:http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf and supplicant owners are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf')] 
+2013-01-23 16:14:47,023 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf
+2013-01-23 16:14:47,023 (get) DEBUG: accept_header: None
+2013-01-23 16:14:47,023 (get) DEBUG: using all understood formats
+2013-01-23 16:14:47,023 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:14:47,024 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans_owner2.rdf HTTP/1.1" 200 2000
+2013-01-23 16:14:47,025 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf
+2013-01-23 16:14:47,025 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:14:47,025 (get) DEBUG: saving state...
+2013-01-23 16:14:47,025 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf
+2013-01-23 16:14:47,030 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/supp_trans.rdf> .
+    }
+
+2013-01-23 16:14:47,033 (is_trusted) INFO: SUCCESS!: supp owner: http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf <-> auth owner: http://localhost:3000/fixtures/foaf/auth_trans_owner2.rdf
+2013-01-23 16:14:47,034 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 16:14:47,034 (get) DEBUG: accept_header: None
+2013-01-23 16:14:47,034 (get) DEBUG: using all understood formats
+2013-01-23 16:14:47,035 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:14:47,036 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans.rdf HTTP/1.1" 200 2070
+2013-01-23 16:14:47,036 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 16:14:47,036 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:14:47,036 (get) DEBUG: saving state...
+2013-01-23 16:14:47,036 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans.rdf
+2013-01-23 16:14:47,053 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/supp_trans.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner1.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_owner2.rdf')]
+2013-01-23 16:14:47,054 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf
+2013-01-23 16:14:47,054 (get) DEBUG: accept_header: None
+2013-01-23 16:14:47,054 (get) DEBUG: using all understood formats
+2013-01-23 16:14:47,054 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:14:47,055 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_no_common.rdf HTTP/1.1" 200 1982
+2013-01-23 16:14:47,056 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf
+2013-01-23 16:14:47,056 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:14:47,056 (get) DEBUG: saving state...
+2013-01-23 16:14:47,056 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf
+2013-01-23 16:14:47,072 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf')]
+2013-01-23 16:14:47,072 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 16:14:47,072 (get) DEBUG: accept_header: None
+2013-01-23 16:14:47,072 (get) DEBUG: using all understood formats
+2013-01-23 16:14:47,073 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:14:47,074 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner3.rdf HTTP/1.1" 200 2016
+2013-01-23 16:14:47,074 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 16:14:47,074 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:14:47,075 (get) DEBUG: saving state...
+2013-01-23 16:14:47,075 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf
+2013-01-23 16:14:47,080 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf> .
+    }
+
+2013-01-23 16:14:47,092 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans.rdf')]
+2013-01-23 16:14:47,093 (is_trusted) DEBUG: Common friends for auth:http://localhost:3000/fixtures/foaf/auth_trans_owner3.rdf and supplicant owners are [] 
+2013-01-23 16:14:47,093 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 16:14:47,093 (get) DEBUG: accept_header: None
+2013-01-23 16:14:47,093 (get) DEBUG: using all understood formats
+2013-01-23 16:14:47,093 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:14:47,094 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_owner1.rdf HTTP/1.1" 200 1917
+2013-01-23 16:14:47,095 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 16:14:47,095 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:14:47,095 (get) DEBUG: saving state...
+2013-01-23 16:14:47,095 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf
+2013-01-23 16:14:47,100 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans_no_common.rdf> .
+    }
+
+2013-01-23 16:14:47,102 (is_trusted) DEBUG: Authorizer claims that http://localhost:3000/fixtures/foaf/auth_trans_owner1.rdf is its owner but is NOT, skipping...
+2013-01-23 16:14:47,104 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/supp_trans_same_owner.rdf
+2013-01-23 16:14:47,104 (get) DEBUG: accept_header: None
+2013-01-23 16:14:47,104 (get) DEBUG: using all understood formats
+2013-01-23 16:14:47,105 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:14:47,106 (_make_request) DEBUG: "GET /fixtures/foaf/supp_trans_same_owner.rdf HTTP/1.1" 200 2015
+2013-01-23 16:14:47,106 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/supp_trans_same_owner.rdf
+2013-01-23 16:14:47,106 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:14:47,106 (get) DEBUG: saving state...
+2013-01-23 16:14:47,106 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/supp_trans_same_owner.rdf
+2013-01-23 16:14:47,122 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/supp_trans_same_owner.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/dummy.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_both_owner.rdf')]
+2013-01-23 16:14:47,123 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_same_owner.rdf
+2013-01-23 16:14:47,123 (get) DEBUG: accept_header: None
+2013-01-23 16:14:47,123 (get) DEBUG: using all understood formats
+2013-01-23 16:14:47,123 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:14:47,124 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_same_owner.rdf HTTP/1.1" 200 1939
+2013-01-23 16:14:47,125 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_same_owner.rdf
+2013-01-23 16:14:47,125 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:14:47,125 (get) DEBUG: saving state...
+2013-01-23 16:14:47,125 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_same_owner.rdf
+2013-01-23 16:14:47,141 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_same_owner.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_both_owner.rdf')]
+2013-01-23 16:14:47,141 (get) DEBUG: loading webid: http://localhost:3000/fixtures/foaf/auth_trans_both_owner.rdf
+2013-01-23 16:14:47,141 (get) DEBUG: accept_header: None
+2013-01-23 16:14:47,141 (get) DEBUG: using all understood formats
+2013-01-23 16:14:47,142 (_new_conn) INFO: Starting new HTTP connection (1): localhost
+2013-01-23 16:14:47,143 (_make_request) DEBUG: "GET /fixtures/foaf/auth_trans_both_owner.rdf HTTP/1.1" 200 2027
+2013-01-23 16:14:47,143 (get) DEBUG: successful URI dereference for uri http://localhost:3000/fixtures/foaf/auth_trans_both_owner.rdf
+2013-01-23 16:14:47,143 (get) DEBUG: content-type: application/rdf+xml
+2013-01-23 16:14:47,143 (get) DEBUG: saving state...
+2013-01-23 16:14:47,143 (get) INFO: successfully got content for uri http://localhost:3000/fixtures/foaf/auth_trans_both_owner.rdf
+2013-01-23 16:14:47,149 (check_for_link) DEBUG: ASK_QUERY = 
+
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {
+    [] foaf:knows <http://localhost:3000/fixtures/foaf/auth_trans_same_owner.rdf> .
+    }
+
+2013-01-23 16:14:47,162 (fetch_friends) DEBUG: Friends of http://localhost:3000/fixtures/foaf/auth_trans_both_owner.rdf are [rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/supp_trans_same_owner.rdf'), rdflib.term.URIRef(u'http://localhost:3000/fixtures/foaf/auth_trans_same_owner.rdf')]
+2013-01-23 16:14:47,162 (is_trusted) DEBUG: Common friends for auth:http://localhost:3000/fixtures/foaf/auth_trans_both_owner.rdf and supplicant owners are [] 
+2013-01-24 10:05:05,157 (<module>) INFO: version: 3.2.3

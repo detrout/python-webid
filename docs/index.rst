@@ -44,7 +44,7 @@ To use the validator, you have to initialize it passing a base64 encoded certifi
   """
 
   webidval = WebIDValidator(certstr=certstr)
-  validated, data = validator.validate() 
+  validated, data = webidval.validate() 
 
 where *validated* is a bool indicating whether the authentication was successful or not.
 

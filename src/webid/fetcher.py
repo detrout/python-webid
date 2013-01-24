@@ -52,7 +52,7 @@ class WebIDLoader(object):
         if preferred_format:
             self.preferred_format = preferred_format
         # XXX TODO pass verify option
-        self.verify_server_cert = False
+        self.verify_server_cert = True
         self.format = None
 
         self.graph = None

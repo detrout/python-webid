@@ -23,6 +23,28 @@ WHERE {
    }
 }
 """
+
+# used to see whether a person knows the other.
+# you should use like: KNOWS_CHECK.format(target_uri=....)
+KNOWS_CHECK = """
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+
+ASK {{
+    [] foaf:knows <{target_uri}> .
+    }}
+"""
+
+# We are omitting the BlankNodes. In future we can try a recursive call.
+FIND_FRIENDS = """
+PREFIX foaf: <http://xmlns.com/foaf/0.1/>
+PREFIX rdf: <http://www.w3.org/1999/02/22-rdf-syntax-ns#>
+
+SELECT DISTINCT ?friend {
+    [] foaf:knows ?friend .
+    FILTER isURI(?friend)  .
+    }
+"""
+
 ###################################################
 # WebID TestSuite TESTCASES
 

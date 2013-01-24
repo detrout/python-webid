@@ -1,0 +1,30 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:foaf="http://xmlns.com/foaf/0.1/"
+         xmlns:pingback="http://purl.org/net/pingback/"
+         xmlns:cert="http://www.w3.org/ns/auth/cert#">
+
+  <foaf:Person rdf:about="http://localhost:3000/fixtures/foaf/supp_trans_owner1.rdf">
+    <foaf:name>Suuplicant</foaf:name>
+    <foaf:givenName>Supp</foaf:givenName>
+    <foaf:familyName>Trans</foaf:familyName>
+    <foaf:nick>supp</foaf:nick>
+    <foaf:mbox rdf:resource="mailto:supp@example.com"/>
+    <pingback:to rdf:resource="https://localhost:3000/pingback.php"/>
+    <cert:key>
+      <cert:RSAPublicKey>
+        <cert:modulus rdf:datatype="http://www.w3.org/2001/XMLSchema#hexBinary">CD854279B534B429683CEAF9102EE866CAB45D381E6D4DFA2CAB2ECCFD9E18A38F672251D13FC21F26A219B94C827DE22483F6D7FA9292893666D90279E7606498C0550E87B49131C14C149F5BA24A7B6514721685DD73D60A5A13930246C38A7A3B51C56098F089461E3CF2EC50F672F42C12DF9F3ACE9755C5DEB43D504E07ABD0F94C5C5537AEE599C8D285C9409924EDADA289DABA4257BB622CBEC1A48632C01121DF5ECDA0FC86DC42CD86BB0D388075BDEBC7A924C3335D5AD04BD8E87652C25C95E3C5DF28CC8BA8D566AA5481980E3E2F02375E8B2CF2BC8D2876A3A2CCF68C1F2946B5ECA52DA4A1012B754E169F757FD7B4ECD544B95DBFD96387</cert:modulus>
+        <cert:exponent rdf:datatype="http://www.w3.org/2001/XMLSchema#int">65537</cert:exponent>
+      </cert:RSAPublicKey>
+    </cert:key>
+
+    <foaf:knows rdf:resource="http://localhost:3000/fixtures/foaf/supp_trans.rdf"/>
+  </foaf:Person>
+
+  <foaf:PersonalProfileDocument rdf:about="http://localhost:3000/fixtures/foaf/supp_trans_owner1.rdf">
+    <foaf:maker rdf:resource="http://localhost:3000/fixtures/foaf/supp_trans_owner1.rdf"/>
+    <foaf:primaryTopic rdf:resource="http://localhost:3000/fixtures/foaf/supp_trans_owner1.rdf"/>
+    <foaf:title>Supp's profile.</foaf:title>
+  </foaf:PersonalProfileDocument>
+
+</rdf:RDF>

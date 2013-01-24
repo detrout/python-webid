@@ -1,4 +1,4 @@
-VERSION = (0, 2)
+VERSION = (0, 3)
 
 
 def get_version():
@@ -10,3 +10,7 @@ def get_version():
     return version
 
 __version__ = get_version()
+
+import logging
+FORMAT = "%(asctime)-15s (%(funcName)s) %(levelname)s: %(message)s"
+logging.basicConfig(filename='logging.log',level=logging.DEBUG,format=FORMAT)
