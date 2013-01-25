@@ -7,7 +7,6 @@
 .installed.cfg
 .PROD
 __minitage__*
-bin/*
 build/*
 develop-eggs
 dist
