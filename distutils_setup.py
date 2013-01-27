@@ -6,7 +6,7 @@ setup(
     author='Ben Carrillo',
     author_email='bennomadic at gmail dot com',
     packages=['webid', 'webid.test'],
-    scripts=['bin/webid_bridge.py'],
+    
     download_url='https://github.com/bennomadic/python-webid.git', # OR'https://github.com/yunus/python-webid.git',
     #url='http://pypi.python.org/pypi/TowelStuff/',
     license='LICENSE.txt',
@@ -39,5 +39,5 @@ setup(
       
     # In fact cbridge is not extension module, rather it embeds python. It will be used by hostapd
     # I put it here to store it in one place.
-    ext_modules=[Extension('cbridge', ['bin/cbridge.c'], libraries=['python2.7'])]
+    ext_modules=[Extension('webid_trust', ['bin/webid_trust.c'], libraries=['python2.7'])]
 )

@@ -23,7 +23,7 @@ long_description = """A python lib implementing server-side validation and clien
 setup(
     name='python-webid',
     packages=['webid', 'webid.test'],
-    scripts=['bin/webid_bridge.py'],
+    
     include_package_data=True,
     exclude_package_data={
         'requirements': ['%s/*.tar.gz' % VERSION],
@@ -53,6 +53,6 @@ setup(
     keywords='foaf, ssl, webid, x509, certificate, \
         client certificate, authentication',
     tests_require=['pytest'],
-    ext_modules=[Extension('cbridge', ['bin/cbridge.c'], libraries=['python2.7'])],
+    ext_modules=[Extension('webid_trust', ['bin/webid_trust.c'], libraries=['python2.7'])],
     zip_safe=False,
 )
