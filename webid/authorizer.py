@@ -146,3 +146,21 @@ class TransitiveTrust(DirectTrust):
                     logger.info("Supplicant claims that %s is its owner but it turned out NOT "%common)
                     
         return False
+    
+# The below methods are supposed to be called by C 
+
+def __direct_trust(auth_uri,supp_uri):
+    """
+    This method is used to call the direct_trust class from C
+    """  
+    dt =  DirectTrust(supp_uri, auth_uri)
+    #print "In python code is the connection trusted: ",dt.is_trusted
+    return dt.is_trusted
+
+def __transitive_trust(auth_uri,supp_uri):
+    """
+    This method is used to call the transitive_trust class from C
+    """    
+    tt =  TransitiveTrust(supp_uri, auth_uri)
+    #print "In python code is the connection trusted: ",tt.is_trusted
+    return tt.is_trusted
