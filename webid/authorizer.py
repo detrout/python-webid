@@ -4,11 +4,14 @@ Created on Jan 22, 2013
 @author: ydurmus
 '''
 
-from fetcher import WebIDLoader
-from rdflib import URIRef
-import constants
 import logging
+import constants
+from fetcher import WebIDLoader
+
+
+
 logger = logging.getLogger(name=__name__)
+
 
 
 class URIisNotReachable(Exception):
@@ -43,8 +46,9 @@ class DirectTrust(object):
     
     def load_the_graph(self,profile):
         """
-        Loads the own profile
+        Loads the profile
         """
+        print "profile:", profile.uri
         if not is_profile_reachable(profile):
             profile.get()
             if is_profile_reachable(profile): # GET might not be able to fetch any data
@@ -66,7 +70,7 @@ class DirectTrust(object):
         try:      
             self.load_the_graph(profile)   
             ask_query = constants.KNOWS_CHECK.format(target_uri=friend_uri)    
-            #logger.debug("ASK_QUERY = \n%s"%ask_query)
+            logger.debug("ASK_QUERY to %s = \n%s"%(profile.uri,ask_query))
             result = profile.graph.query(ask_query)
             return result.__iter__().next()
         except URIisNotReachable as ex:
@@ -107,9 +111,11 @@ class TransitiveTrust(DirectTrust):
         Gets a WebIDLoader as profile
         """
         try:
+            
+            if not isinstance(profile,WebIDLoader): profile = WebIDLoader(profile) 
             self.load_the_graph(profile)
             res = profile.graph.query(constants.FIND_FRIENDS)
-            friends = map(lambda x: x[0],res)
+            friends = map(lambda x: x[0].__str__(),res)
             logger.debug("Friends of %s are %s"%(profile.uri,friends))
             return friends
         except URIisNotReachable as ex:
@@ -147,6 +153,106 @@ class TransitiveTrust(DirectTrust):
                     
         return False
     
+
+class Trust(TransitiveTrust):
+    """
+    In this class 3 different trust connections are done at once.
+    First SameOwner is checked
+    Second Direct Friends are checked. (It has a different notion than DirectTrust)
+    Third InDirectFriends are checked. (Different than transitive trust)
+    
+    Forward-Backward hybrid algorithm is used to search for trust.
+    
+    
+    
+    Steps:
+    Get AuthenticatorOwners
+    Get SupplicantOwners
+    If there exists a common owner than verify that owner knows the supplicant (SAME OWNER)
+    
+    If not SameOwner
+    Fetch friend list of each authenticator owners.
+    If supplicant owners are in the list of direct friends then verify friend. (Direct Friends)
+    
+    If not Direct Friends
+    Fetch friend list of each supplicant owners.
+    If there exists a common friend, then verify the friend that it knows the supplicant. (InDirect Friends)
+    
+    if not: Fail
+    
+    """
+    def __init__(self,SUPP_URI,AUTH_URI):
+        
+        super(Trust,self).__init__(SUPP_URI,AUTH_URI)
+        
+        self.supp_uri = SUPP_URI
+        self.auth_uri = AUTH_URI
+        
+    
+    @property
+    def is_trusted(self):
+        return self.same_owner() or self.direct_friends() or self.indirect_friends() 
+    
+    def same_owner(self):
+        common_owners = filter(lambda x: x in self.supplicant_owners, self.authorizer_owners) 
+        logger.debug("Common friends for auth:%s \nsupplicant owners %s \nare: %s "%
+                         (self.authorizer_owners,self.supplicant_owners,common_owners ))
+        
+        for common in common_owners:
+            # Now Let's verify the this common owner knows the supplicant device.             
+            if self.check_for_link(WebIDLoader(common), self.supp_uri, True):
+                logger.debug("SAME_OWNER: Auth:%s  and Supp:%s have same owner:%s",self.auth_uri,self.supp_uri, common)
+                return True 
+            else:
+                self.supplicant_owners.remove(common)           
+        return False
+    
+    
+    def direct_friends(self):
+        self.auth_owner_friend_map = {}
+        logger.debug("Looking for Direct Friends")
+        for auth_owner in self.authorizer_owners:
+            friends_of_auth_owner =  self.fetch_friends(auth_owner)
+            self.auth_owner_friend_map[auth_owner] = friends_of_auth_owner
+            common_direct_friends =  filter(lambda x: x in friends_of_auth_owner, self.supplicant_owners)
+            
+            for common in common_direct_friends:
+                #Consider sorted lists and binary search for performance improvement
+                if self.check_for_link(WebIDLoader(common), self.supp_uri, False):
+                    logger.debug("DIRECT_FRIEND: Auth:%s  and Supp:%s has direct_friend:%s",self.auth_uri,self.supp_uri, common)
+                    return True
+                else:
+                    self.supplicant_owners.remove(common) 
+        return False
+    
+    def indirect_friends(self):
+        logger.debug("Looking for indirect friends")
+        self.supp_owner_friend_map = {}
+        for auth_owner in self.authorizer_owners:
+            if not self.auth_owner_friend_map.has_key(auth_owner):  
+                self.auth_owner_friend_map[auth_owner] = self.fetch_friends(auth_owner)
+            
+            
+            for supp_owner in reversed(self.supplicant_owners):
+                if not  self.supp_owner_friend_map.has_key(supp_owner):
+                    self.supp_owner_friend_map[supp_owner] =  self.fetch_friends(supp_owner)
+                if self.supp_uri not in self.supp_owner_friend_map[supp_owner]:  # it seems that supplicant device is making up new artificial owners.
+                    self.supp_owner_friend_map.remove(supp_owner)
+                    self.supplicant_owners.remove(supp_owner)
+                    continue
+                
+                common_friends = filter(lambda x : x in self.auth_owner_friend_map[auth_owner], 
+                                        self.supp_owner_friend_map[supp_owner])
+                logger.debug("common indirect friends:  %s",common_friends)
+                logger.debug("supp uri: %s \n supp_owner_friends:%s ",self.supp_uri,self.supp_owner_friend_map[supp_owner])
+                for common in common_friends:
+                    if self.check_for_link(WebIDLoader(common), supp_owner, False): 
+                            logger.debug("InDIRECT_FRIEND: Auth:%s  and Supp:%s has indirect_friend:%s",self.auth_uri,self.supp_uri, common)
+                            return True
+                    else:    # supplicant owner to common friend there is one directional relation. common person does not know supp owner.
+                        self.supp_owner_friend_map[supp_owner].remove(common)
+        return False
+
 # The below methods are supposed to be called by C 
 
 def __direct_trust(auth_uri,supp_uri):
@@ -164,3 +270,10 @@ def __transitive_trust(auth_uri,supp_uri):
     tt =  TransitiveTrust(supp_uri, auth_uri)
     #print "In python code is the connection trusted: ",tt.is_trusted
     return tt.is_trusted
+
+def __trust(auth_uri,supp_uri):
+    """
+    This method is used to call the trust class from C
+    """    
+    t = Trust(supp_uri,auth_uri)
+    return t.is_trusted
