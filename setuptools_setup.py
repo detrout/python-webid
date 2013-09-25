@@ -22,7 +22,7 @@ long_description = """A python lib implementing server-side validation and clien
 
 setup(
     name='python-webid',
-    packages=['webid', 'webid.test'],
+    packages=['webid', 'webid.test','webid.sniffer'],
     
     include_package_data=True,
     exclude_package_data={
@@ -32,13 +32,13 @@ setup(
     description='A python lib implementing server-side validation \
     and client ssl authentication following the WebID spec',
     long_description=long_description,
-    author='Ben Carrillo',
-    author_email='bennomadic at gmail dot com',
+    author='Ben Carrillo, yunus durmus',
+    author_email='bennomadic at gmail dot com, yunus@yanis.co',
     download_url='https://github.com/bennomadic/python-webid.git',
     #url=...
     dependency_links = ['git://github.com/ametaireau/M2Crypto.git@master#egg=M2Crypto'],
     install_requires=['M2Crypto>=0.20.2', 'rdflib>=3.2.0', 'rdfextras',
-        'requests', 'html5lib'],
+        'requests', 'html5lib','sqlalchemy','scapy'],
     #test_requires=[],
     platforms=['any'],
     classifiers=[
@@ -53,6 +53,5 @@ setup(
     keywords='foaf, ssl, webid, x509, certificate, \
         client certificate, authentication',
     tests_require=['pytest'],
-    ext_modules=[Extension('webid_trust', ['bin/webid_trust.c'], libraries=['python2.7'])],
-    zip_safe=False,
+    zip_safe=False
 )

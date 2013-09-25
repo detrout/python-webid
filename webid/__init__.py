@@ -11,6 +11,7 @@ def get_version():
 
 __version__ = get_version()
 
+
 import logging
 FORMAT = "%(asctime)-15s - (%(funcName)s) - %(levelname)s: - %(message)s"
 logging.basicConfig(filename='logging.log',level=logging.DEBUG,format=FORMAT)

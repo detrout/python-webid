@@ -35,7 +35,9 @@ setup(
                       'rdflib>=3.2.0', 
                       'rdfextras',
                       'requests', 
-                      'html5lib'],    
+                      'html5lib',
+                      'sqlalchemy',
+                      'scapy'],    
       
     # In fact cbridge is not extension module, rather it embeds python. It will be used by hostapd
     # I put it here to store it in one place.

@@ -10,7 +10,11 @@ from fetcher import WebIDLoader
 
 
 
+
+
+
 logger = logging.getLogger(name=__name__)
+
 
 
 
@@ -181,12 +185,15 @@ class Trust(TransitiveTrust):
     if not: Fail
     
     """
-    def __init__(self,SUPP_URI,AUTH_URI):
+    def __init__(self,SUPP_URI,AUTH_URI, MAC_LIST):
         
         super(Trust,self).__init__(SUPP_URI,AUTH_URI)
         
         self.supp_uri = SUPP_URI
         self.auth_uri = AUTH_URI
+        logger.debug("MACLIST %s",MAC_LIST)
+        self.mac_list = filter(lambda x: x != "", MAC_LIST.split("|"))
+        logger.debug("The existing mac list is %s",self.mac_list)
         
     
     @property
@@ -271,9 +278,9 @@ def __transitive_trust(auth_uri,supp_uri):
     #print "In python code is the connection trusted: ",tt.is_trusted
     return tt.is_trusted
 
-def __trust(auth_uri,supp_uri):
+def __trust(auth_uri,supp_uri,maclist,wheninseconds):
     """
     This method is used to call the trust class from C
     """    
-    t = Trust(supp_uri,auth_uri)
+    t = Trust(supp_uri,auth_uri,maclist)
     return t.is_trusted
