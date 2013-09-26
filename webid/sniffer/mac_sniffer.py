@@ -48,6 +48,8 @@ class Device(Base):
         if (when - self.last_seen).seconds > 30*60:
             # re-encountered the device 
             self.first_seen = when 
-        logger.debug("Updating last seen from %s to %s for %s", self.last_seen, when, self.mac)
+        #logger.debug("Updating last seen from %s to %s for %s", self.last_seen, when, self.mac)
         self.last_seen = when
+        
+
 

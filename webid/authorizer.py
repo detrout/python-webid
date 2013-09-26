@@ -5,12 +5,13 @@ Created on Jan 22, 2013
 '''
 
 import logging
+
+from sqlalchemy.orm import subqueryload
+
 import constants
 from fetcher import WebIDLoader
-
-
-
-
+from sniffer import mac_sniffer
+import sniffer
 
 
 logger = logging.getLogger(name=__name__)
@@ -191,9 +192,10 @@ class Trust(TransitiveTrust):
         
         self.supp_uri = SUPP_URI
         self.auth_uri = AUTH_URI
-        logger.debug("MACLIST %s",MAC_LIST)
         self.mac_list = filter(lambda x: x != "", MAC_LIST.split("|"))
         logger.debug("The existing mac list is %s",self.mac_list)
+        if sniffer.session is None:
+            sniffer.session = sniffer.createDB_and_session()
         
     
     @property
@@ -282,5 +284,27 @@ def __trust(auth_uri,supp_uri,maclist,wheninseconds):
     """
     This method is used to call the trust class from C
     """    
+    
     t = Trust(supp_uri,auth_uri,maclist)
-    return t.is_trusted
+    if t.is_trusted:
+        
+        logger.debug("Mac list is %s",t.mac_list)
+        if len(t.mac_list) == 1:
+            try:
+                d = sniffer.session.query(mac_sniffer.Device).options(subqueryload('owners')).filter_by(mac=t.mac_list[0]).first()
+                logger.debug("Device is %s",d)
+                d.uri = supp_uri
+
+                for owner in d.owners:
+                    t.supplicant_owners.remove(owner.uri)
+                for missing_owner_uri in t.supplicant_owners:
+                    p = mac_sniffer.Person(URI=missing_owner_uri)
+                    d.owners.append(p)
+                logger.debug("Owners are: %s", d.owners)
+                sniffer.session.commit()
+            except Exception as e:
+                logger.error("Database exception: %s", e)
+        
+        
+        return True
+    return False
