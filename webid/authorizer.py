@@ -7,11 +7,13 @@ Created on Jan 22, 2013
 import logging
 
 from sqlalchemy.orm import subqueryload
+from sqlalchemy.sql.expression import and_, func
 
 import constants
 from fetcher import WebIDLoader
 from sniffer import mac_sniffer
 import sniffer
+from webid.sniffer.mac_sniffer import Person, Device
 
 
 logger = logging.getLogger(name=__name__)
@@ -241,7 +243,6 @@ class Trust(TransitiveTrust):
             if not self.auth_owner_friend_map.has_key(auth_owner):  
                 self.auth_owner_friend_map[auth_owner] = self.fetch_friends(auth_owner)
             
-            
             for supp_owner in reversed(self.supplicant_owners):
                 if not  self.supp_owner_friend_map.has_key(supp_owner):
                     self.supp_owner_friend_map[supp_owner] =  self.fetch_friends(supp_owner)
@@ -254,7 +255,33 @@ class Trust(TransitiveTrust):
                                         self.supp_owner_friend_map[supp_owner])
                 logger.debug("common indirect friends:  %s",common_friends)
                 logger.debug("supp uri: %s \n supp_owner_friends:%s ",self.supp_uri,self.supp_owner_friend_map[supp_owner])
-                for common in common_friends:
+               
+                common_friends_around = []
+                # For each possible supplicant mac device, we will find the possible common friends who are around now (at least in last 30 minutes) and we will order them according to their 
+                # temporal closeness to supplicant device based on first_seen time.
+                for target_mac in self.mac_list:
+                    supp_device = sniffer.session.query(mac_sniffer.Device).filter(mac_sniffer.Device.mac == target_mac).first()
+                    friends_around = sniffer.session.query(Person.uri).join(Person.devices).\
+                                        filter( \
+                                                and_( \
+                                                      Person.uri.in_(common_friends), \
+                                                      ((func.strftime('%s','now') - func.strftime('%s', Device.last_seen )) <= 30*60) \
+                                                      ) \
+                                              ).\
+                                        order_by(func.abs(func.strftime('%s',supp_device.first_seen) - func.strftime('%s',Device.first_seen))).\
+                                        all()
+                    # Unfortunately sql returns a weird list like [(u'https://',), (u'https://',)], but we need only list of Uris not list of list of uris
+                    common_friends_around.append(map(lambda x: x[0],friends_around))
+                sorted_commmon_friends_around = set([])
+                for i in range(reduce(lambda acc,x: max(len(x),acc) ,common_friends_around,0 )):
+                    for friend_list in common_friends_around:
+                        if len(friend_list): sorted_commmon_friends_around.add(friend_list.pop(0))
+                
+                logger.debug("Sorted Common friends that are around: %s",sorted_commmon_friends_around)
+                # if not bounded:
+                # for x in common_friends: sorted_common_friends_around.add(x)
+
+                for common in sorted_commmon_friends_around:
                     if self.check_for_link(WebIDLoader(common), supp_owner, False): 
                             logger.debug("InDIRECT_FRIEND: Auth:%s  and Supp:%s has indirect_friend:%s",self.auth_uri,self.supp_uri, common)
                             return True
@@ -291,14 +318,17 @@ def __trust(auth_uri,supp_uri,maclist,wheninseconds):
         logger.debug("Mac list is %s",t.mac_list)
         if len(t.mac_list) == 1:
             try:
-                d = sniffer.session.query(mac_sniffer.Device).options(subqueryload('owners')).filter_by(mac=t.mac_list[0]).first()
-                logger.debug("Device is %s",d)
+                d = sniffer.session.query(mac_sniffer.Device).options(subqueryload('owners')).filter(mac=t.mac_list[0]).first()
                 d.uri = supp_uri
-
+                #TODO: remove all the existing owners and add these new ones. Since the owners of the device might have been changed.
                 for owner in d.owners:
                     t.supplicant_owners.remove(owner.uri)
                 for missing_owner_uri in t.supplicant_owners:
-                    p = mac_sniffer.Person(URI=missing_owner_uri)
+                    p = sniffer.session.query(mac_sniffer.Device).filter_by(uri=missing_owner_uri)
+                    if len(p) == 0:
+                        p = mac_sniffer.Person(URI=missing_owner_uri)
+                    else:
+                        p = p[0]
                     d.owners.append(p)
                 logger.debug("Owners are: %s", d.owners)
                 sniffer.session.commit()
