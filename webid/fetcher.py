@@ -53,6 +53,8 @@ class WebIDLoader(object):
             self.preferred_format = preferred_format
         # XXX TODO pass verify option
         self.verify_server_cert = True
+        if(kwargs.has_key("verify_server_cert")):
+            self.verify_server_cert = kwargs["verify_server_cert"]
         self.format = None
 
         self.graph = None
@@ -151,7 +153,7 @@ class WebIDLoader(object):
         format = format or self.format
         try:
             _f = StringIO.StringIO(self.rcontent)
-            self.graph.load(_f, format=format)
+            self.graph.parse(_f, format=format,location=self.uri)
             self.rawprofile = Profile(
                     self.graph.serialize(format="pretty-xml"))
             return True
