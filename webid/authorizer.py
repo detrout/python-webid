@@ -5,6 +5,7 @@ Created on Jan 22, 2013
 '''
 
 import logging
+import warnings
 
 from sqlalchemy.orm import subqueryload
 from sqlalchemy.sql.expression import and_, func
@@ -13,13 +14,27 @@ import constants
 from fetcher import WebIDLoader
 from sniffer import mac_sniffer
 import sniffer
-from webid.sniffer.mac_sniffer import Person, Device
+from sniffer.mac_sniffer import Person, Device
+from webid.utils import ordered_set
 
 
 logger = logging.getLogger(name=__name__)
 
 
+_cached_webid_profiles = {}
 
+def webid_from_cache(uri,**kwargs):
+    if not (_cached_webid_profiles.has_key(uri)):
+        _cached_webid_profiles[uri] = WebIDLoader(uri,**kwargs)
+    return _cached_webid_profiles[uri]
+
+def flush_cache(uri_list=None):
+    if uri_list:
+        for uri in uri_list:
+            if _cached_webid_profiles.has_key(uri): _cached_webid_profiles.pop(uri)
+    else:
+        _cached_webid_profiles.clear()
+         
 
 class URIisNotReachable(Exception):
     """
@@ -48,14 +63,14 @@ class DirectTrust(object):
         """
         self.san_uri = SAN_URI
         self.own_uri = OWN_URI
-        self.own_profile = WebIDLoader(OWN_URI)
+        self.own_profile = webid_from_cache(OWN_URI,verify_server_cert=False)
         
     
     def load_the_graph(self,profile):
         """
         Loads the profile
         """
-        print "profile:", profile.uri
+        #print "profile:", profile.uri
         if not is_profile_reachable(profile):
             profile.get()
             if is_profile_reachable(profile): # GET might not be able to fetch any data
@@ -89,6 +104,7 @@ class DirectTrust(object):
         """
         Main method to check for a direct trust link.
         """
+        warnings.warn("The method has been deprecated, use Trust class or __trust callback", DeprecationWarning, stacklevel=2)
         return self.check_for_link(self.own_profile,self.san_uri)
     
 
@@ -105,11 +121,11 @@ class TransitiveTrust(DirectTrust):
     def __init__(self,SAN_URI,OWN_URI):
         super(TransitiveTrust,self).__init__(SAN_URI,OWN_URI)
         # Supplicant is the requester device
-        self.supplicant_profile =  WebIDLoader(SAN_URI)
+        self.supplicant_profile =  webid_from_cache(SAN_URI,verify_server_cert=False)
         self.supplicant_owners = self.fetch_friends(self.supplicant_profile) 
         
         # Authorizer is the device that runs this code
-        self.authorizer_profile = WebIDLoader(OWN_URI)
+        self.authorizer_profile = webid_from_cache(OWN_URI,verify_server_cert=False)
         self.authorizer_owners = self.fetch_friends(self.authorizer_profile)
     
     def fetch_friends(self,profile):
@@ -119,21 +135,22 @@ class TransitiveTrust(DirectTrust):
         """
         try:
             
-            if not isinstance(profile,WebIDLoader): profile = WebIDLoader(profile) 
+            if not isinstance(profile,WebIDLoader): profile = webid_from_cache(profile,verify_server_cert=False) 
             self.load_the_graph(profile)
             res = profile.graph.query(constants.FIND_FRIENDS)
             friends = map(lambda x: x[0].__str__(),res)
             logger.debug("Friends of %s are %s"%(profile.uri,friends))
             return friends
         except URIisNotReachable as ex:
-            logger.warning(ex)
+            logger.error(ex)
             return []
         
     @property
     def is_trusted(self):
+        warnings.warn("The method has been deprecated, use Trust class or __trust callback", DeprecationWarning, stacklevel=2)
         
         for auth_owner in self.authorizer_owners:
-            auth_profile = WebIDLoader(auth_owner)
+            auth_profile = webid_from_cache(auth_owner,verify_server_cert=False)
             if not self.check_for_link(auth_profile, self.own_uri):
                 logger.debug("Authorizer claims that %s is its owner but is NOT, skipping..."%auth_owner)
                 continue
@@ -145,7 +162,7 @@ class TransitiveTrust(DirectTrust):
             logger.debug("Common friends for auth:%s \nsupplicant owners %s \nare: %s "%
                          (auth_owner,self.supplicant_owners,common_friends ))
             for common in common_friends:
-                common_profile = WebIDLoader(common)
+                common_profile = webid_from_cache(common,verify_server_cert=False)
                 # Also check whether 
                 if self.check_for_link(common_profile, self.san_uri):
                     logger.info("SUCCESS!: supp owner: %s <-> auth owner: %s"%
@@ -188,7 +205,7 @@ class Trust(TransitiveTrust):
     if not: Fail
     
     """
-    def __init__(self,SUPP_URI,AUTH_URI, MAC_LIST):
+    def __init__(self,SUPP_URI,AUTH_URI, MAC_LIST,bounded_search=True):
         
         super(Trust,self).__init__(SUPP_URI,AUTH_URI)
         
@@ -198,7 +215,7 @@ class Trust(TransitiveTrust):
         logger.debug("The existing mac list is %s",self.mac_list)
         if sniffer.session is None:
             sniffer.session = sniffer.createDB_and_session()
-        
+        self.bounded_search = bounded_search
     
     @property
     def is_trusted(self):
@@ -206,13 +223,13 @@ class Trust(TransitiveTrust):
     
     def same_owner(self):
         common_owners = filter(lambda x: x in self.supplicant_owners, self.authorizer_owners) 
-        logger.debug("Common friends for auth:%s \nsupplicant owners %s \nare: %s "%
+        logger.debug("Same friends for auth:%s \nsupplicant owners %s \nare: %s "%
                          (self.authorizer_owners,self.supplicant_owners,common_owners ))
         
         for common in common_owners:
             # Now Let's verify the this common owner knows the supplicant device.             
-            if self.check_for_link(WebIDLoader(common), self.supp_uri, True):
-                logger.debug("SAME_OWNER: Auth:%s  and Supp:%s have same owner:%s",self.auth_uri,self.supp_uri, common)
+            if self.check_for_link(webid_from_cache(common,verify_server_cert=False), self.supp_uri, True):
+                logger.info("SAME_OWNER: Auth:%s  and Supp:%s have same owner:%s",self.auth_uri,self.supp_uri, common)
                 return True 
             else:
                 self.supplicant_owners.remove(common)           
@@ -229,8 +246,8 @@ class Trust(TransitiveTrust):
             
             for common in common_direct_friends:
                 #Consider sorted lists and binary search for performance improvement
-                if self.check_for_link(WebIDLoader(common), self.supp_uri, False):
-                    logger.debug("DIRECT_FRIEND: Auth:%s  and Supp:%s has direct_friend:%s",self.auth_uri,self.supp_uri, common)
+                if self.check_for_link(webid_from_cache(common,verify_server_cert=False), self.supp_uri, False):
+                    logger.info("DIRECT_FRIEND: Auth:%s  and Supp:%s has direct_friend:%s",self.auth_uri,self.supp_uri, common)
                     return True
                 else:
                     self.supplicant_owners.remove(common) 
@@ -250,7 +267,8 @@ class Trust(TransitiveTrust):
                     self.supp_owner_friend_map.remove(supp_owner)
                     self.supplicant_owners.remove(supp_owner)
                     continue
-                
+            # TODO:******************************************    
+            #for supp_owner in reversed(self.supplicant_owners): # This FOR will be removed since we want to be fair in our tests. All the supplicant friends should have been fetched    
                 common_friends = filter(lambda x : x in self.auth_owner_friend_map[auth_owner], 
                                         self.supp_owner_friend_map[supp_owner])
                 logger.debug("common indirect friends:  %s",common_friends)
@@ -265,28 +283,34 @@ class Trust(TransitiveTrust):
                                         filter( \
                                                 and_( \
                                                       Person.uri.in_(common_friends), \
-                                                      ((func.strftime('%s','now') - func.strftime('%s', Device.last_seen )) <= 30*60) \
+                                                      ((func.strftime('%s','now') - func.strftime('%s', Device.last_seen )) <= 2*30*60) \
                                                       ) \
                                               ).\
                                         order_by(func.abs(func.strftime('%s',supp_device.first_seen) - func.strftime('%s',Device.first_seen))).\
                                         all()
                     # Unfortunately sql returns a weird list like [(u'https://',), (u'https://',)], but we need only list of Uris not list of list of uris
                     common_friends_around.append(map(lambda x: x[0],friends_around))
-                sorted_commmon_friends_around = set([])
+                sorted_commmon_friends_around = ordered_set.OrderedSet([])
                 for i in range(reduce(lambda acc,x: max(len(x),acc) ,common_friends_around,0 )):
                     for friend_list in common_friends_around:
                         if len(friend_list): sorted_commmon_friends_around.add(friend_list.pop(0))
                 
                 logger.debug("Sorted Common friends that are around: %s",sorted_commmon_friends_around)
-                # if not bounded:
-                # for x in common_friends: sorted_common_friends_around.add(x)
-
+                
+                if not self.bounded_search:
+                    for x in common_friends: 
+                        sorted_commmon_friends_around.add(x)
+                #retvalue = False
                 for common in sorted_commmon_friends_around:
-                    if self.check_for_link(WebIDLoader(common), supp_owner, False): 
-                            logger.debug("InDIRECT_FRIEND: Auth:%s  and Supp:%s has indirect_friend:%s",self.auth_uri,self.supp_uri, common)
-                            return True
+                    if self.check_for_link(webid_from_cache(common,verify_server_cert=False), supp_owner, False): 
+                            logger.info("InDIRECT_FRIEND: Auth:%s  and Supp:%s has indirect_friend:%s",self.auth_uri,self.supp_uri, common)
+                            # TODO: we should directly return TRUE, we changed the below value only for testing
+                            #retvalue = True
+                            return True 
                     else:    # supplicant owner to common friend there is one directional relation. common person does not know supp owner.
                         self.supp_owner_friend_map[supp_owner].remove(common)
+                #if retvalue: return True
+                        
         return False
 
 # The below methods are supposed to be called by C 
@@ -313,28 +337,28 @@ def __trust(auth_uri,supp_uri,maclist,wheninseconds):
     """    
     
     t = Trust(supp_uri,auth_uri,maclist)
-    if t.is_trusted:
-        
+    if t.is_trusted:        
         logger.debug("Mac list is %s",t.mac_list)
-        if len(t.mac_list) == 1:
-            try:
-                d = sniffer.session.query(mac_sniffer.Device).options(subqueryload('owners')).filter(mac=t.mac_list[0]).first()
-                d.uri = supp_uri
-                #TODO: remove all the existing owners and add these new ones. Since the owners of the device might have been changed.
-                for owner in d.owners:
-                    t.supplicant_owners.remove(owner.uri)
-                for missing_owner_uri in t.supplicant_owners:
-                    p = sniffer.session.query(mac_sniffer.Device).filter_by(uri=missing_owner_uri)
-                    if len(p) == 0:
-                        p = mac_sniffer.Person(URI=missing_owner_uri)
-                    else:
-                        p = p[0]
-                    d.owners.append(p)
-                logger.debug("Owners are: %s", d.owners)
-                sniffer.session.commit()
-            except Exception as e:
-                logger.error("Database exception: %s", e)
+#         if len(t.mac_list) == 1:
+#             try:
+#                 d = sniffer.session.query(mac_sniffer.Device).options(subqueryload('owners')).filter(mac_sniffer.Device.mac==t.mac_list[0]).first()
+#                 d.uri = supp_uri
+#                 #TODO: remove all the existing owners and add these new ones. Since the owners of the device might have been changed.
+#                 for owner in d.owners:
+#                     t.supplicant_owners.remove(owner.uri)
+#                 for missing_owner_uri in t.supplicant_owners:
+#                     p = sniffer.session.query(mac_sniffer.Device).filter_by(uri=missing_owner_uri).all()
+#                     if len(p) == 0:
+#                         p = mac_sniffer.Person(URI=missing_owner_uri)
+#                     else:
+#                         p = p[0]
+#                     d.owners.append(p)
+#                 logger.debug("Owners are: %s", d.owners)
+#                 sniffer.session.commit()
+#             except Exception as e:
+#                 logger.error("Database exception: %s", e)
         
-        
+        flush_cache([supp_uri])
+        flush_cache(t.supplicant_owners)
         return True
     return False

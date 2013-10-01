@@ -22,7 +22,7 @@ long_description = """A python lib implementing server-side validation and clien
 
 setup(
     name='python-webid',
-    packages=['webid', 'webid.test','webid.sniffer'],
+    packages=['webid', 'webid.test','webid.sniffer','webid.utils'],
     
     include_package_data=True,
     exclude_package_data={
@@ -37,7 +37,7 @@ setup(
     download_url='https://github.com/bennomadic/python-webid.git',
     #url=...
     dependency_links = ['git://github.com/ametaireau/M2Crypto.git@master#egg=M2Crypto'],
-    install_requires=['M2Crypto>=0.20.2', 'rdflib>=3.2.0', 'rdfextras',
+    install_requires=['M2Crypto>=0.20.2', 'rdflib>=4.0', 'rdfextras',
         'requests', 'html5lib','sqlalchemy','scapy'],
     #test_requires=[],
     platforms=['any'],
