@@ -23,8 +23,8 @@ logger = logging.getLogger(name=__name__)
 
 _cached_webid_profiles = {}
 
-def webid_from_cache(uri,**kwargs):
-    if not (_cached_webid_profiles.has_key(uri)):
+def webid_from_cache(uri,fresh=False,**kwargs):
+    if not (_cached_webid_profiles.has_key(uri)) or fresh:
         _cached_webid_profiles[uri] = WebIDLoader(uri,**kwargs)
     return _cached_webid_profiles[uri]
 
@@ -47,6 +47,8 @@ class URIisNotReachable(Exception):
 def is_profile_reachable(profile):
     return (hasattr(profile,'ok') and profile.ok)
 
+
+# DEPRECATED DO NOT USE. INSTEAD CALL THE TRUST CLASS BELOW
 class DirectTrust(object):
     """
     Checks whether there is a direct connection between the peers.
@@ -110,7 +112,7 @@ class DirectTrust(object):
 
         
     
-
+# DEPRECATED DO NOT USE. INSTEAD CALL THE TRUST CLASS BELOW
 class TransitiveTrust(DirectTrust):
     """
     Checks whether there is a transitive connection between the peers.
@@ -228,11 +230,12 @@ class Trust(TransitiveTrust):
         
         for common in common_owners:
             # Now Let's verify the this common owner knows the supplicant device.             
-            if self.check_for_link(webid_from_cache(common,verify_server_cert=False), self.supp_uri, True):
+            if self.check_for_link(webid_from_cache(common,fresh=True,verify_server_cert=False), self.supp_uri, True):
                 logger.info("SAME_OWNER: Auth:%s  and Supp:%s have same owner:%s",self.auth_uri,self.supp_uri, common)
-                return True 
+                return True
+                 
             else:
-                self.supplicant_owners.remove(common)           
+                self.supplicant_owners.remove(common) 
         return False
     
     
@@ -243,19 +246,22 @@ class Trust(TransitiveTrust):
             friends_of_auth_owner =  self.fetch_friends(auth_owner)
             self.auth_owner_friend_map[auth_owner] = friends_of_auth_owner
             common_direct_friends =  filter(lambda x: x in friends_of_auth_owner, self.supplicant_owners)
-            
+            #retvalue = False
             for common in common_direct_friends:
                 #Consider sorted lists and binary search for performance improvement
-                if self.check_for_link(webid_from_cache(common,verify_server_cert=False), self.supp_uri, False):
+                if self.check_for_link(webid_from_cache(common,fresh=False,verify_server_cert=False), self.supp_uri, False):
                     logger.info("DIRECT_FRIEND: Auth:%s  and Supp:%s has direct_friend:%s",self.auth_uri,self.supp_uri, common)
                     return True
+                    #retvalue = True
                 else:
                     self.supplicant_owners.remove(common) 
+        #return retvalue
         return False
     
     def indirect_friends(self):
         logger.debug("Looking for indirect friends")
         self.supp_owner_friend_map = {}
+        retvalue = False
         for auth_owner in self.authorizer_owners:
             if not self.auth_owner_friend_map.has_key(auth_owner):  
                 self.auth_owner_friend_map[auth_owner] = self.fetch_friends(auth_owner)
@@ -267,8 +273,7 @@ class Trust(TransitiveTrust):
                     self.supp_owner_friend_map.remove(supp_owner)
                     self.supplicant_owners.remove(supp_owner)
                     continue
-            # TODO:******************************************    
-            #for supp_owner in reversed(self.supplicant_owners): # This FOR will be removed since we want to be fair in our tests. All the supplicant friends should have been fetched    
+                
                 common_friends = filter(lambda x : x in self.auth_owner_friend_map[auth_owner], 
                                         self.supp_owner_friend_map[supp_owner])
                 logger.debug("common indirect friends:  %s",common_friends)
@@ -300,65 +305,46 @@ class Trust(TransitiveTrust):
                 if not self.bounded_search:
                     for x in common_friends: 
                         sorted_commmon_friends_around.add(x)
-                #retvalue = False
+                
                 for common in sorted_commmon_friends_around:
-                    if self.check_for_link(webid_from_cache(common,verify_server_cert=False), supp_owner, False): 
+                    if self.check_for_link(webid_from_cache(common,fresh=True,verify_server_cert=False), supp_owner, False): 
                             logger.info("InDIRECT_FRIEND: Auth:%s  and Supp:%s has indirect_friend:%s",self.auth_uri,self.supp_uri, common)
                             # TODO: we should directly return TRUE, we changed the below value only for testing
-                            #retvalue = True
-                            return True 
+                            retvalue = True
+                            #return True 
                     else:    # supplicant owner to common friend there is one directional relation. common person does not know supp owner.
                         self.supp_owner_friend_map[supp_owner].remove(common)
-                #if retvalue: return True
                         
-        return False
+        return retvalue
 
 # The below methods are supposed to be called by C 
 
-def __direct_trust(auth_uri,supp_uri):
-    """
-    This method is used to call the direct_trust class from C
-    """  
-    dt =  DirectTrust(supp_uri, auth_uri)
-    #print "In python code is the connection trusted: ",dt.is_trusted
-    return dt.is_trusted
 
-def __transitive_trust(auth_uri,supp_uri):
-    """
-    This method is used to call the transitive_trust class from C
-    """    
-    tt =  TransitiveTrust(supp_uri, auth_uri)
-    #print "In python code is the connection trusted: ",tt.is_trusted
-    return tt.is_trusted
-
-def __trust(auth_uri,supp_uri,maclist,wheninseconds):
+def __trust(auth_uri,supp_uri,maclist):
     """
     This method is used to call the trust class from C
     """    
     
-    t = Trust(supp_uri,auth_uri,maclist)
+    t = Trust(supp_uri,auth_uri,maclist,False)
     if t.is_trusted:        
         logger.debug("Mac list is %s",t.mac_list)
-#         if len(t.mac_list) == 1:
-#             try:
-#                 d = sniffer.session.query(mac_sniffer.Device).options(subqueryload('owners')).filter(mac_sniffer.Device.mac==t.mac_list[0]).first()
-#                 d.uri = supp_uri
-#                 #TODO: remove all the existing owners and add these new ones. Since the owners of the device might have been changed.
-#                 for owner in d.owners:
-#                     t.supplicant_owners.remove(owner.uri)
-#                 for missing_owner_uri in t.supplicant_owners:
-#                     p = sniffer.session.query(mac_sniffer.Device).filter_by(uri=missing_owner_uri).all()
-#                     if len(p) == 0:
-#                         p = mac_sniffer.Person(URI=missing_owner_uri)
-#                     else:
-#                         p = p[0]
-#                     d.owners.append(p)
-#                 logger.debug("Owners are: %s", d.owners)
-#                 sniffer.session.commit()
-#             except Exception as e:
-#                 logger.error("Database exception: %s", e)
-        
-        flush_cache([supp_uri])
-        flush_cache(t.supplicant_owners)
+        if len(t.mac_list) == 1:
+            try:
+                d = sniffer.session.query(mac_sniffer.Device).options(subqueryload('owners')).filter(mac_sniffer.Device.mac==t.mac_list[0]).first()
+                d.uri = supp_uri
+                #TODO: remove all the existing owners and add these new ones. Since the owners of the device might have been changed.
+                for owner in d.owners:
+                    t.supplicant_owners.remove(owner.uri)
+                for missing_owner_uri in t.supplicant_owners:
+                    p = sniffer.session.query(mac_sniffer.Device).filter_by(uri=missing_owner_uri).all()
+                    if len(p) == 0:
+                        p = mac_sniffer.Person(URI=missing_owner_uri)
+                    else:
+                        p = p[0]
+                    d.owners.append(p)
+                logger.debug("Owners are: %s", d.owners)
+                sniffer.session.commit()
+            except Exception as e:
+                logger.error("Database exception: %s", e)
         return True
     return False
