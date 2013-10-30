@@ -5,8 +5,8 @@ A python lib implementing server-side validation
 and client ssl authentication following the WebID spec
 + 
 Now there is also support for Authorization
-Direct and transitive trust has been checked. 
-Use authorizer module.
+Same Owner, Direct and transitive trust has been checked. 
+Use authorizer module. Use the '''trust''' class to check for social relations.
 
 
 reading the docs
@@ -24,9 +24,7 @@ hacking together
 
 for devs
 ========
-
-- For authorization a separate testing suite is added. Goto src/test run>> python runtest.py . But before running the tests 
-also run a simple http server@3000 (python -m SimpleHTTPServer 3000) under test directory to serve foaf fixtures. 
+ 
 
 - Mailing lists on `foaf-protocols <http://lists.foaf-project.org/mailman/listinfo/foaf-protocols>`_
 `W3C WebID Community Group <http://www.w3.org/community/webid/>`_
