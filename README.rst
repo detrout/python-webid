@@ -5,7 +5,7 @@ A python lib implementing server-side validation
 and client ssl authentication following the WebID spec
 + 
 Now there is also support for Authorization
-Same Owner, Direct and transitive trust has been checked. 
+Same Owner, Direct and Indirect trust has been checked. 
 Use authorizer module. Use the '''trust''' class to check for social relations.
 
 
