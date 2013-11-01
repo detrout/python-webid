@@ -261,7 +261,7 @@ class Trust(TransitiveTrust):
     def indirect_friends(self):
         logger.debug("Looking for indirect friends")
         self.supp_owner_friend_map = {}
-        retvalue = False
+
         for auth_owner in self.authorizer_owners:
             if not self.auth_owner_friend_map.has_key(auth_owner):  
                 self.auth_owner_friend_map[auth_owner] = self.fetch_friends(auth_owner)
@@ -310,12 +310,12 @@ class Trust(TransitiveTrust):
                     if self.check_for_link(webid_from_cache(common,fresh=True,verify_server_cert=False), supp_owner, False): 
                             logger.info("InDIRECT_FRIEND: Auth:%s  and Supp:%s has indirect_friend:%s",self.auth_uri,self.supp_uri, common)
                             # TODO: we should directly return TRUE, we changed the below value only for testing
-                            retvalue = True
-                            #return True 
+                            #retvalue = True
+                            return True 
                     else:    # supplicant owner to common friend there is one directional relation. common person does not know supp owner.
                         self.supp_owner_friend_map[supp_owner].remove(common)
                         
-        return retvalue
+        return False
 
 # The below methods are supposed to be called by C 
 
