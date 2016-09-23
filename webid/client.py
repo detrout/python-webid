@@ -1,11 +1,13 @@
 #!/usr/bin/env python
 import ConfigParser
+from __future__ import absolute_import
+
 import httplib
 import os
 import urllib
 import shutil
 
-from constants import FORMATS
+from .constants import FORMATS
 
 """
 WARNING!!!!

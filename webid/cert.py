@@ -1,9 +1,11 @@
+from __future__ import absolute_import
+
 from datetime import datetime
 import logging
 
 import M2Crypto
 
-from serializers import Id, PublicKey
+from .serializers import Id, PublicKey
 
 logger = logging.getLogger()
 

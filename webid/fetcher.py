@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import logging
 import requests
 import StringIO
@@ -13,8 +15,8 @@ if rdflib_major_ver == 3:
     rdflib.plugin.register('sparql', rdflib.query.Result,
            'rdfextras.sparql.query', 'SPARQLQueryResult')
 
-from serializers import Profile
-from constants import FORMATS
+from .serializers import Profile
+from .constants import FORMATS
 
 #ch = logging.StreamHandler()
 #ch.setLevel(logging.DEBUG)

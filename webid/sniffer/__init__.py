@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 from sqlalchemy import create_engine
 from sqlalchemy.ext.declarative import declarative_base
 from sqlalchemy.orm import sessionmaker
@@ -24,7 +26,7 @@ def createDB_and_session(Sess = sessionmaker()):
 # initialization is also inside.
 
 
-import mac_sniffer
+from . import mac_sniffer
 
 session = None
 def add_mac_address(mac_address, wheninseconds):

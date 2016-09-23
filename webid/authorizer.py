@@ -3,19 +3,19 @@ Created on Jan 22, 2013
 
 @author: ydurmus
 '''
-
+from __future__ import absolute_import
 import logging
 import warnings
 
 from sqlalchemy.orm import subqueryload
 from sqlalchemy.sql.expression import and_, func
 
-import constants
-from fetcher import WebIDLoader
-from sniffer import mac_sniffer
-import sniffer
-from sniffer.mac_sniffer import Person, Device
-from webid.utils import ordered_set
+from . import constants
+from .fetcher import WebIDLoader
+from .sniffer import mac_sniffer
+from . import sniffer
+from .sniffer.mac_sniffer import Person, Device
+from .utils import ordered_set
 
 
 logger = logging.getLogger(name=__name__)

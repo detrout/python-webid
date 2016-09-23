@@ -1,14 +1,16 @@
+from __future__ import absolute_import
+
 from collections import defaultdict
 from datetime import datetime
 from itertools import chain
 import re
 import logging
 
-import constants
-from webidchecks import WebIDChecks
-from serializers import Id, PublicKey, WebIDClaim
-from cert import Cert
-from fetcher import WebIDLoader
+from . import constants
+from .webidchecks import WebIDChecks
+from .serializers import Id, PublicKey, WebIDClaim
+from .cert import Cert
+from .fetcher import WebIDLoader
 
 logger = logging.getLogger(name=__name__)
 

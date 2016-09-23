@@ -1,3 +1,5 @@
+from __future__ import absolute_import
+
 import logging
 import os
 import requests
@@ -6,7 +8,7 @@ import StringIO
 import rdflib
 from rdflib import URIRef
 
-from constants import TESTREQS, TESTCASES
+from .constants import TESTREQS, TESTCASES
 
 WIT = "RelyingParty"
 WIT_FILENAME = "%s.n3" % WIT
