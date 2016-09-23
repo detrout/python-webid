@@ -96,7 +96,7 @@ class DirectTrust(object):
             ask_query = constants.KNOWS_CHECK.format(target_uri=friend_uri)
             logger.debug("ASK_QUERY to %s = \n%s"%(profile.uri,ask_query))
             result = profile.graph.query(ask_query)
-            return result.__iter__().next()
+            return next(iter(result))
         except URIisNotReachable as ex:
             logger.warning(ex)
             return False
