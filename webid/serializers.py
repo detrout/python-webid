@@ -1,11 +1,7 @@
 from __future__ import absolute_import
 
 import uuid
-try:
-    from collections import namedtuple
-except ImportError:
-    # python2.5 backport
-    from xcollections import namedtuple
+from collections import namedtuple
 from .constants import PUBKEY_RDF
 
 """
