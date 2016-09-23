@@ -140,7 +140,7 @@ class TransitiveTrust(DirectTrust):
             if not isinstance(profile,WebIDLoader): profile = webid_from_cache(profile,verify_server_cert=False)
             self.load_the_graph(profile)
             res = profile.graph.query(constants.FIND_FRIENDS)
-            friends = map(lambda x: x[0].__str__(),res)
+            friends = [str(x[0]) for x in res]
             logger.debug("Friends of %s are %s"%(profile.uri,friends))
             return friends
         except URIisNotReachable as ex:
@@ -160,7 +160,7 @@ class TransitiveTrust(DirectTrust):
             # find intersection
             #  we are adding auth owner to the list since there may be a common owner. Auth owner can be the
             # owner of both devices.
-            common_friends = filter(lambda x: x in self.supplicant_owners, auth_friends+[auth_owner])
+            common_friends = [ x for x in auth_friends+[auth_owner] if x in self.supplicant_owners]
             logger.debug("Common friends for auth:%s \nsupplicant owners %s \nare: %s "%
                          (auth_owner,self.supplicant_owners,common_friends ))
             for common in common_friends:
