@@ -39,6 +39,7 @@ setup(
     dependency_links = ['git://github.com/ametaireau/M2Crypto.git@master#egg=M2Crypto'],
     install_requires=['M2Crypto>=0.20.2', 'rdflib>=4.0', 'rdfextras',
                       'requests', 'html5lib','sqlalchemy','scapy','six'],
+    tests_require=['requests-mock']
     #test_requires=[],
     platforms=['any'],
     classifiers=[
