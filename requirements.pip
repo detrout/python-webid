@@ -6,3 +6,4 @@ html5lib
 pytest
 sqlalchemy
 scapy
+six
