@@ -23,7 +23,7 @@ long_description = """A python lib implementing server-side validation and clien
 setup(
     name='python-webid',
     packages=['webid', 'webid.test','webid.sniffer','webid.utils'],
-    
+
     include_package_data=True,
     exclude_package_data={
         'requirements': ['%s/*.tar.gz' % VERSION],

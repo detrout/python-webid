@@ -34,7 +34,7 @@ def flush_cache(uri_list=None):
             if uri in _cached_webid_profiles: _cached_webid_profiles.pop(uri)
     else:
         _cached_webid_profiles.clear()
-         
+
 
 class URIisNotReachable(Exception):
     """
@@ -52,11 +52,11 @@ def is_profile_reachable(profile):
 class DirectTrust(object):
     """
     Checks whether there is a direct connection between the peers.
-    In Social Machines: the device owners' own certificate is used. 
+    In Social Machines: the device owners' own certificate is used.
     Therefore, there has to be a direct foaf:knows link in the personal
-    profile document. 
+    profile document.
     """
-    
+
     def __init__(self, SAN_URI, OWN_URI):
         """
         Since the certificate has already been authenticated, we just need the URI value under
@@ -66,8 +66,8 @@ class DirectTrust(object):
         self.san_uri = SAN_URI
         self.own_uri = OWN_URI
         self.own_profile = webid_from_cache(OWN_URI,verify_server_cert=False)
-        
-    
+
+
     def load_the_graph(self,profile):
         """
         Loads the profile
@@ -78,40 +78,40 @@ class DirectTrust(object):
             if is_profile_reachable(profile): # GET might not be able to fetch any data
                 profile.parse(None) #We are not sure about the format
             else:
-                raise URIisNotReachable("URI:%s is not reachable."%profile.uri) 
-            
-        
+                raise URIisNotReachable("URI:%s is not reachable."%profile.uri)
+
+
     def check_for_link(self,profile, friend_uri, self_link=True):
         """
-        Checks for a foaf:knows link in OWN_URI for SAN_URI. IF a link exists this is interpreted 
-        as OWN_URI holder trusts SAN_URI. 
+        Checks for a foaf:knows link in OWN_URI for SAN_URI. IF a link exists this is interpreted
+        as OWN_URI holder trusts SAN_URI.
         If self_link is true then people can be friends with themselves.
         """
         # we assume that people are friends of each other
         if(self_link & (profile.uri == friend_uri)):
             logger.debug("The person itself is being check for friendship")
-            return True   
-        try:      
-            self.load_the_graph(profile)   
-            ask_query = constants.KNOWS_CHECK.format(target_uri=friend_uri)    
+            return True
+        try:
+            self.load_the_graph(profile)
+            ask_query = constants.KNOWS_CHECK.format(target_uri=friend_uri)
             logger.debug("ASK_QUERY to %s = \n%s"%(profile.uri,ask_query))
             result = profile.graph.query(ask_query)
             return result.__iter__().next()
         except URIisNotReachable as ex:
             logger.warning(ex)
             return False
-    
-    @property 
+
+    @property
     def is_trusted(self):
         """
         Main method to check for a direct trust link.
         """
         warnings.warn("The method has been deprecated, use Trust class or __trust callback", DeprecationWarning, stacklevel=2)
         return self.check_for_link(self.own_profile,self.san_uri)
-    
 
-        
-    
+
+
+
 # DEPRECATED DO NOT USE. INSTEAD CALL THE TRUST CLASS BELOW
 class TransitiveTrust(DirectTrust):
     """
@@ -119,25 +119,25 @@ class TransitiveTrust(DirectTrust):
     In Social Machines: Devices have their own certificates and profiles on the web.
     First, we should find their owners' profiles and then look for links between them.
     """
-    
+
     def __init__(self,SAN_URI,OWN_URI):
         super(TransitiveTrust,self).__init__(SAN_URI,OWN_URI)
         # Supplicant is the requester device
         self.supplicant_profile =  webid_from_cache(SAN_URI,verify_server_cert=False)
-        self.supplicant_owners = self.fetch_friends(self.supplicant_profile) 
-        
+        self.supplicant_owners = self.fetch_friends(self.supplicant_profile)
+
         # Authorizer is the device that runs this code
         self.authorizer_profile = webid_from_cache(OWN_URI,verify_server_cert=False)
         self.authorizer_owners = self.fetch_friends(self.authorizer_profile)
-    
+
     def fetch_friends(self,profile):
-        """ 
+        """
         Returns a LIST of friends, Friends are defined with foaf:knows relations
         Gets a WebIDLoader as profile
         """
         try:
-            
-            if not isinstance(profile,WebIDLoader): profile = webid_from_cache(profile,verify_server_cert=False) 
+
+            if not isinstance(profile,WebIDLoader): profile = webid_from_cache(profile,verify_server_cert=False)
             self.load_the_graph(profile)
             res = profile.graph.query(constants.FIND_FRIENDS)
             friends = map(lambda x: x[0].__str__(),res)
@@ -146,26 +146,26 @@ class TransitiveTrust(DirectTrust):
         except URIisNotReachable as ex:
             logger.error(ex)
             return []
-        
+
     @property
     def is_trusted(self):
         warnings.warn("The method has been deprecated, use Trust class or __trust callback", DeprecationWarning, stacklevel=2)
-        
+
         for auth_owner in self.authorizer_owners:
             auth_profile = webid_from_cache(auth_owner,verify_server_cert=False)
             if not self.check_for_link(auth_profile, self.own_uri):
                 logger.debug("Authorizer claims that %s is its owner but is NOT, skipping..."%auth_owner)
                 continue
             auth_friends = self.fetch_friends(auth_profile)
-            # find intersection 
+            # find intersection
             #  we are adding auth owner to the list since there may be a common owner. Auth owner can be the
             # owner of both devices.
-            common_friends = filter(lambda x: x in self.supplicant_owners, auth_friends+[auth_owner]) 
+            common_friends = filter(lambda x: x in self.supplicant_owners, auth_friends+[auth_owner])
             logger.debug("Common friends for auth:%s \nsupplicant owners %s \nare: %s "%
                          (auth_owner,self.supplicant_owners,common_friends ))
             for common in common_friends:
                 common_profile = webid_from_cache(common,verify_server_cert=False)
-                # Also check whether 
+                # Also check whether
                 if self.check_for_link(common_profile, self.san_uri):
                     logger.info("SUCCESS!: supp owner: %s <-> auth owner: %s"%
                                  (common,auth_owner))
@@ -176,9 +176,9 @@ class TransitiveTrust(DirectTrust):
                     #owner list.
                     self.supplicant_owners.remove(common)
                     logger.info("Supplicant claims that %s is its owner but it turned out NOT "%common)
-                    
+
         return False
-    
+
 
 class Trust(TransitiveTrust):
     """
@@ -186,31 +186,31 @@ class Trust(TransitiveTrust):
     First SameOwner is checked
     Second Direct Friends are checked. (It has a different notion than DirectTrust)
     Third InDirectFriends are checked. (Different than transitive trust)
-    
+
     Forward-Backward hybrid algorithm is used to search for trust.
-    
-    
-    
+
+
+
     Steps:
     Get AuthenticatorOwners
     Get SupplicantOwners
     If there exists a common owner than verify that owner knows the supplicant (SAME OWNER)
-    
+
     If not SameOwner
     Fetch friend list of each authenticator owners.
     If supplicant owners are in the list of direct friends then verify friend. (Direct Friends)
-    
+
     If not Direct Friends
     Fetch friend list of each supplicant owners.
     If there exists a common friend, then verify the friend that it knows the supplicant. (InDirect Friends)
-    
+
     if not: Fail
-    
+
     """
     def __init__(self,SUPP_URI,AUTH_URI, MAC_LIST,bounded_search=True):
-        
+
         super(Trust,self).__init__(SUPP_URI,AUTH_URI)
-        
+
         self.supp_uri = SUPP_URI
         self.auth_uri = AUTH_URI
         self.mac_list = filter(lambda x: x != "", MAC_LIST.split("|"))
@@ -218,27 +218,27 @@ class Trust(TransitiveTrust):
         if sniffer.session is None:
             sniffer.session = sniffer.createDB_and_session()
         self.bounded_search = bounded_search
-    
+
     @property
     def is_trusted(self):
-        return self.same_owner() or self.direct_friends() or self.indirect_friends() 
-    
+        return self.same_owner() or self.direct_friends() or self.indirect_friends()
+
     def same_owner(self):
-        common_owners = filter(lambda x: x in self.supplicant_owners, self.authorizer_owners) 
+        common_owners = filter(lambda x: x in self.supplicant_owners, self.authorizer_owners)
         logger.debug("Same friends for auth:%s \nsupplicant owners %s \nare: %s "%
                          (self.authorizer_owners,self.supplicant_owners,common_owners ))
-        
+
         for common in common_owners:
-            # Now Let's verify the this common owner knows the supplicant device.             
+            # Now Let's verify the this common owner knows the supplicant device.
             if self.check_for_link(webid_from_cache(common,fresh=True,verify_server_cert=False), self.supp_uri, True):
                 logger.info("SAME_OWNER: Auth:%s  and Supp:%s have same owner:%s",self.auth_uri,self.supp_uri, common)
                 return True
-                 
+
             else:
-                self.supplicant_owners.remove(common) 
+                self.supplicant_owners.remove(common)
         return False
-    
-    
+
+
     def direct_friends(self):
         self.auth_owner_friend_map = {}
         logger.debug("Looking for Direct Friends")
@@ -254,10 +254,10 @@ class Trust(TransitiveTrust):
                     return True
                     #retvalue = True
                 else:
-                    self.supplicant_owners.remove(common) 
+                    self.supplicant_owners.remove(common)
         #return retvalue
         return False
-    
+
     def indirect_friends(self):
         logger.debug("Looking for indirect friends")
         self.supp_owner_friend_map = {}
@@ -265,7 +265,7 @@ class Trust(TransitiveTrust):
         for auth_owner in self.authorizer_owners:
             if not auth_owner in self.auth_owner_friend_map:
                 self.auth_owner_friend_map[auth_owner] = self.fetch_friends(auth_owner)
-            
+
             for supp_owner in reversed(self.supplicant_owners):
                 if not sup_owner in self.supp_owner_friend_map:
                     self.supp_owner_friend_map[supp_owner] =  self.fetch_friends(supp_owner)
@@ -273,14 +273,14 @@ class Trust(TransitiveTrust):
                     self.supp_owner_friend_map.remove(supp_owner)
                     self.supplicant_owners.remove(supp_owner)
                     continue
-                
-                common_friends = filter(lambda x : x in self.auth_owner_friend_map[auth_owner], 
+
+                common_friends = filter(lambda x : x in self.auth_owner_friend_map[auth_owner],
                                         self.supp_owner_friend_map[supp_owner])
                 logger.debug("common indirect friends:  %s",common_friends)
                 logger.debug("supp uri: %s \n supp_owner_friends:%s ",self.supp_uri,self.supp_owner_friend_map[supp_owner])
-               
+
                 common_friends_around = []
-                # For each possible supplicant mac device, we will find the possible common friends who are around now (at least in last 30 minutes) and we will order them according to their 
+                # For each possible supplicant mac device, we will find the possible common friends who are around now (at least in last 30 minutes) and we will order them according to their
                 # temporal closeness to supplicant device based on first_seen time.
                 for target_mac in self.mac_list:
                     supp_device = sniffer.session.query(mac_sniffer.Device).filter(mac_sniffer.Device.mac == target_mac).first()
@@ -299,34 +299,34 @@ class Trust(TransitiveTrust):
                 for i in range(reduce(lambda acc,x: max(len(x),acc) ,common_friends_around,0 )):
                     for friend_list in common_friends_around:
                         if len(friend_list): sorted_commmon_friends_around.add(friend_list.pop(0))
-                
+
                 logger.debug("Sorted Common friends that are around: %s",sorted_commmon_friends_around)
-                
+
                 if not self.bounded_search:
-                    for x in common_friends: 
+                    for x in common_friends:
                         sorted_commmon_friends_around.add(x)
-                
+
                 for common in sorted_commmon_friends_around:
-                    if self.check_for_link(webid_from_cache(common,fresh=True,verify_server_cert=False), supp_owner, False): 
+                    if self.check_for_link(webid_from_cache(common,fresh=True,verify_server_cert=False), supp_owner, False):
                             logger.info("InDIRECT_FRIEND: Auth:%s  and Supp:%s has indirect_friend:%s",self.auth_uri,self.supp_uri, common)
                             # TODO: we should directly return TRUE, we changed the below value only for testing
                             #retvalue = True
-                            return True 
+                            return True
                     else:    # supplicant owner to common friend there is one directional relation. common person does not know supp owner.
                         self.supp_owner_friend_map[supp_owner].remove(common)
-                        
+
         return False
 
-# The below methods are supposed to be called by C 
+# The below methods are supposed to be called by C
 
 
 def __trust(auth_uri,supp_uri,maclist):
     """
     This method is used to call the trust class from C
-    """    
-    
+    """
+
     t = Trust(supp_uri,auth_uri,maclist,False)
-    if t.is_trusted:        
+    if t.is_trusted:
         logger.debug("Mac list is %s",t.mac_list)
         if len(t.mac_list) == 1:
             try:
