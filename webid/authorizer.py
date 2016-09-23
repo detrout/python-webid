@@ -80,8 +80,7 @@ class DirectTrust(object):
             else:
                 raise URIisNotReachable("URI:%s is not reachable."%profile.uri)
 
-
-    def check_for_link(self,profile, friend_uri, self_link=True):
+    def check_for_link(self, profile, friend_uri, self_link=True):
         """
         Checks for a foaf:knows link in OWN_URI for SAN_URI. IF a link exists this is interpreted
         as OWN_URI holder trusts SAN_URI.
@@ -136,8 +135,8 @@ class TransitiveTrust(DirectTrust):
         Gets a WebIDLoader as profile
         """
         try:
-
-            if not isinstance(profile,WebIDLoader): profile = webid_from_cache(profile,verify_server_cert=False)
+            if not isinstance(profile,WebIDLoader):
+                profile = webid_from_cache(profile,verify_server_cert=False)
             self.load_the_graph(profile)
             res = profile.graph.query(constants.FIND_FRIENDS)
             friends = [str(x[0]) for x in res]
