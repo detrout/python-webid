@@ -24,14 +24,14 @@ logger = logging.getLogger(name=__name__)
 _cached_webid_profiles = {}
 
 def webid_from_cache(uri,fresh=False,**kwargs):
-    if not (_cached_webid_profiles.has_key(uri)) or fresh:
+    if not (uri in _cached_webid_profiles) or fresh:
         _cached_webid_profiles[uri] = WebIDLoader(uri,**kwargs)
     return _cached_webid_profiles[uri]
 
 def flush_cache(uri_list=None):
     if uri_list:
         for uri in uri_list:
-            if _cached_webid_profiles.has_key(uri): _cached_webid_profiles.pop(uri)
+            if uri in _cached_webid_profiles: _cached_webid_profiles.pop(uri)
     else:
         _cached_webid_profiles.clear()
          
@@ -263,11 +263,11 @@ class Trust(TransitiveTrust):
         self.supp_owner_friend_map = {}
 
         for auth_owner in self.authorizer_owners:
-            if not self.auth_owner_friend_map.has_key(auth_owner):  
+            if not auth_owner in self.auth_owner_friend_map:
                 self.auth_owner_friend_map[auth_owner] = self.fetch_friends(auth_owner)
             
             for supp_owner in reversed(self.supplicant_owners):
-                if not  self.supp_owner_friend_map.has_key(supp_owner):
+                if not sup_owner in self.supp_owner_friend_map:
                     self.supp_owner_friend_map[supp_owner] =  self.fetch_friends(supp_owner)
                 if self.supp_uri not in self.supp_owner_friend_map[supp_owner]:  # it seems that supplicant device is making up new artificial owners.
                     self.supp_owner_friend_map.remove(supp_owner)

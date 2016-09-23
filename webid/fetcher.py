@@ -55,7 +55,7 @@ class WebIDLoader(object):
             self.preferred_format = preferred_format
         # XXX TODO pass verify option
         self.verify_server_cert = True
-        if(kwargs.has_key("verify_server_cert")):
+        if("verify_server_cert" in kwargs):
             self.verify_server_cert = kwargs["verify_server_cert"]
         self.format = None
 

@@ -68,7 +68,7 @@ class ProbeRequests():
 requesters = {}
 def PacketHandler(pkt):
 	if pkt.haslayer(Dot11) and pkt.type == 0 and pkt.subtype == 4:
-# 		if requesters.has_key(pkt.addr2):
+# 		if pkt.addr2 in requesters:
 # 			requesters[pkt.addr2].update()
 # 		else:
 # 			requesters[pkt.addr2] = ProbeRequests()
