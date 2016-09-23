@@ -2,7 +2,7 @@ from __future__ import absolute_import
 
 import logging
 import requests
-import StringIO
+from six import StringIO
 from xml.sax import SAXParseException
 
 import rdflib
@@ -154,7 +154,7 @@ class WebIDLoader(object):
         self.graph = rdflib.ConjunctiveGraph()
         format = format or self.format
         try:
-            _f = StringIO.StringIO(self.rcontent)
+            _f = StringIO(self.rcontent)
             self.graph.parse(_f, format=format,location=self.uri)
             self.rawprofile = Profile(
                     self.graph.serialize(format="pretty-xml"))

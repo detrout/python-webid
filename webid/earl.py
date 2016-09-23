@@ -3,7 +3,7 @@ from __future__ import absolute_import
 import logging
 import os
 import requests
-import StringIO
+from six import StringIO
 
 import rdflib
 from rdflib import URIRef
@@ -60,7 +60,7 @@ class Parser(object):
             #print('downloading spec!')
             URI = 'http://www.w3.org/2005/Incubator/webid/earl/RelyingParty.n3'
             r = requests.get(URI)
-            _file = StringIO.StringIO(r.content)
+            _file = StringIO(r.content)
         else:
             _file = open(os.path.join(
                 os.path.dirname(__file__), 'data', WIT_FILENAME))
