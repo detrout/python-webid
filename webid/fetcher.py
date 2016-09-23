@@ -155,7 +155,7 @@ class WebIDLoader(object):
         format = format or self.format
         try:
             _f = StringIO(self.rcontent)
-            self.graph.parse(_f, format=format,location=self.uri)
+            self.graph.parse(_f, format=format, publicID=self.uri)
             self.rawprofile = Profile(
                     self.graph.serialize(format="pretty-xml"))
             return True
