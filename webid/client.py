@@ -1,7 +1,7 @@
 #!/usr/bin/env python
-import ConfigParser
 from __future__ import absolute_import
 
+from six import configparser
 import httplib
 import os
 import urllib
@@ -50,7 +50,7 @@ if not os.path.exists(_default_config):
     #FIXME get proper path to data dir!!!
     shutil.copyfile('data/sample.cfg', _default_config)
 
-config = ConfigParser.ConfigParser()
+config = configparser.ConfigParser()
 config.read(_default_config)
 
 
