@@ -133,7 +133,7 @@ class WebIDLoader(object):
         #XXX only for DEBUG, do not save whole req object!
         #self.r = req
 
-        self.rcontent = req.content
+        self.rcontent = req.text
         self.rheaders = req.headers
         self.rstatus_code = req.status_code
         ctype = req.headers.get('content-type', None)
