@@ -12,9 +12,9 @@ def get_version():
 __version__ = get_version()
 
 
-import logging
-FORMAT = "%(asctime)-15s - (%(funcName)s) - %(levelname)s: - %(message)s"
-logging.basicConfig(filename='logging.log',level=logging.INFO,format=FORMAT)
+#import logging
+#FORMAT = "%(asctime)-15s - (%(funcName)s) - %(levelname)s: - %(message)s"
+#logging.basicConfig(filename='logging.log',level=logging.INFO,format=FORMAT)
 #===============================================================================
 # FOR STDOUT
 # # create console handler and set level to debug
