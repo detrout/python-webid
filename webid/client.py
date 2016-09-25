@@ -1,5 +1,5 @@
 #!/usr/bin/env python
-from __future__ import absolute_import
+from __future__ import absolute_import, print_function
 
 from six import configparser
 import httplib
@@ -37,10 +37,9 @@ path = "~/.webidclient"
 
 if _default_dir is None:
     path = os.path.expanduser(path)
-    #print 'path', path
     os.path.normpath(path)
     _default_dir = path
-    #print 'default_dir', _default_dir
+
 
 if not os.path.exists(_default_dir):
     os.mkdir(_default_dir)
@@ -66,7 +65,7 @@ config.read(_default_config)
 def printheaders(headers):
         print
         for (k, v) in headers.items():
-            print k, v
+            print(k, v)
         print
         print
 
@@ -93,14 +92,14 @@ def do_connection(url, certfile, _format="rdf", onlyhead=False):
         rhead = dict(tuple(response.getheaders()))
         ctype = rhead.get('content-type', None)
         if ctype and mime in ctype:
-            print 'OK!'
+            print('OK!')
             printheaders(rhead)
         else:
-            print "format failed :("
+            print("format failed :(")
 
     else:
-        #response to stdout
-        print response.read()
+        # response to stdout
+        print(response.read())
 
 ##########################################################
 # Tests
