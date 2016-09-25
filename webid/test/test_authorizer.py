@@ -16,7 +16,7 @@ from pkg_resources import resource_string
 
 class TestAuthorizer():
     HOST = 'http://localhost:3000/'
-    EXTENSIONS = ['rdf', 'ttl']
+    EXTENSIONS = ['rdf', 'ttl', 'html']
 
     def add_fixture(self, m, pathname):
         _, ext = os.path.splitext(pathname)

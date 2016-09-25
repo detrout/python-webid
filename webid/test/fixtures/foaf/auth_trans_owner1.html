@@ -1,0 +1,39 @@
+<!doctype html>
+<html prefix="rdf: http://www.w3.org/1999/02/22-rdf-syntax-ns#
+              foaf: http://xmlns.com/foaf/0.1/
+              pingback: http://purl.org/net/pingback/
+              cert: http://www.w3.org/ns/auth/cert#"
+      about="http://localhost:3000/fixtures/foaf/auth_trans_owner1.html"
+      typeof="foaf:Person"      >
+  <head>
+    <title property="foaf:title">Auth's profile.</title>
+  </head>
+  <body rel="foaf:primaryTopic"
+        resource="http://localhost:3000/fixtures/foaf/auth_trans.html"/>
+    <p>
+      <address>
+        <span property="foaf:name">Authenticator</span>
+        <span property="foaf:givenName">Auth</span>
+        <span property="foaf:familyName">Trans</span>
+        <a rel="foaf:mbox" href="mailto:auth@example.com">auth@example.com</a>
+        &ldquo;<span property="foaf:nick">auth</span>&rdquo;
+        <span id="cert" property="cert:key" typeof="cert:RSAPublicKey">
+          <meta property="cert:modulus" datatype="xsd:hexBinary" content="CD854279B534B429683CEAF9102EE866CAB45D381E6D4DFA2CAB2ECCFD9E18A38F672251D13FC21F26A219B94C827DE22483F6D7FA9292893666D90279E7606498C0550E87B49131C14C149F5BA24A7B6514721685DD73D60A5A13930246C38A7A3B51C56098F089461E3CF2EC50F672F42C12DF9F3ACE9755C5DEB43D504E07ABD0F94C5C5537AEE599C8D285C9409924EDADA289DABA4257BB622CBEC1A48632C01121DF5ECDA0FC86DC42CD86BB0D388075BDEBC7A924C3335D5AD04BD8E87652C25C95E3C5DF28CC8BA8D566AA5481980E3E2F02375E8B2CF2BC8D2876A3A2CCF68C1F2946B5ECA52DA4A1012B754E169F757FD7B4ECD544B95DBFD96387"/>
+          <meta property="cert:exponent" datatype="xsd:nonNegativeInteger" content="65537" />
+        </span>
+      </address>
+    </p>
+
+    <h2>Knows</h2>
+    <ul>
+      <li><a href="http://localhost:3000/fixtures/foaf/auth_trans.html"
+             property="foaf:knows">auth_trans</a>
+      </li>
+    </ul>
+    <footer about="http://localhost:3000/fixtures/foaf/auth_trans_owner1.html"
+          typeof="foaf:PersonalProfileDocument">
+      <meta rel="foaf:maker" resource="http://localhost:3000/fixtures/foaf/auth_trans_owner1.ttl"/>
+      <meta rel="pingback:to" resource="https://localhost:3000/pingback.php"/>
+    </footer>
+  </body>
+</html>
