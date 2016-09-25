@@ -25,7 +25,7 @@ logger = logging.getLogger(name=__name__)
 #logger.addHandler(ch)
 
 
-UNDERSTOOD_FORMATS = ('rdf', 'rdfa')
+UNDERSTOOD_FORMATS = ('rdf', 'rdfa', 'turtle')
 #TODO leaving out turtle and n3 for now
 #have to see how should rdflib handle it
 UNDERSTOOD_CTYPES = tuple([FORMATS[f] for f in UNDERSTOOD_FORMATS])

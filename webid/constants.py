@@ -97,6 +97,7 @@ FORMATS = {
         'rdf':  'application/rdf+xml',
         'rdfa': 'application/xhtml+xml',
         'turtle': 'text/turtle',
+        'ttl': 'text/turtle',
         'n3': 'text/rdf+n3',
         #'html': 'text/html',
 }
