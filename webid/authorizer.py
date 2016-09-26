@@ -244,8 +244,7 @@ class Trust(TransitiveTrust):
         for auth_owner in self.authorizer_owners:
             friends_of_auth_owner = self.fetch_friends(auth_owner)
             self.auth_owner_friend_map[auth_owner] = friends_of_auth_owner
-            common_direct_friends =  filter(lambda x: x in friends_of_auth_owner, self.supplicant_owners)
-            #retvalue = False
+            common_direct_friends = [x for x in self.supplicant_owners if x in friends_of_auth_owner]
             for common in common_direct_friends:
                 # Consider sorted lists and binary search for performance improvement
                 if self.check_for_link(webid_from_cache(common, fresh=False, verify_server_cert=False),
@@ -275,8 +274,8 @@ class Trust(TransitiveTrust):
                     self.supplicant_owners.remove(supp_owner)
                     continue
 
-                common_friends = filter(lambda x : x in self.auth_owner_friend_map[auth_owner],
-                                        self.supp_owner_friend_map[supp_owner])
+                common_friends = [x for x in self.supp_owner_friend_map[supp_owner]
+                                  if x in self.auth_owner_friend_map[auth_owner]]
                 logger.debug("common indirect friends:  %s", common_friends)
                 logger.debug("supp uri: %s \n supp_owner_friends:%s ",
                              self.supp_uri,
