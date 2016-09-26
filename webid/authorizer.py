@@ -263,13 +263,14 @@ class Trust(TransitiveTrust):
         self.supp_owner_friend_map = {}
 
         for auth_owner in self.authorizer_owners:
-            if not auth_owner in self.auth_owner_friend_map:
+            if auth_owner not in self.auth_owner_friend_map:
                 self.auth_owner_friend_map[auth_owner] = self.fetch_friends(auth_owner)
 
             for supp_owner in reversed(self.supplicant_owners):
-                if not sup_owner in self.supp_owner_friend_map:
-                if self.supp_uri not in self.supp_owner_friend_map[supp_owner]:  # it seems that supplicant device is making up new artificial owners.
+                if supp_owner not in self.supp_owner_friend_map:
                     self.supp_owner_friend_map[supp_owner] = self.fetch_friends(supp_owner)
+                # it seems that supplicant device is making up new artificial owners.
+                if self.supp_uri not in self.supp_owner_friend_map[supp_owner]:
                     self.supp_owner_friend_map.remove(supp_owner)
                     self.supplicant_owners.remove(supp_owner)
                     continue
