@@ -33,7 +33,8 @@ def webid_from_cache(uri, fresh=False, **kwargs):
 def flush_cache(uri_list=None):
     if uri_list:
         for uri in uri_list:
-            if uri in _cached_webid_profiles: _cached_webid_profiles.pop(uri)
+            if uri in _cached_webid_profiles:
+                _cached_webid_profiles.pop(uri)
     else:
         _cached_webid_profiles.clear()
 
