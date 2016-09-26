@@ -159,13 +159,13 @@ class WebIDLoader(object):
             self.rawprofile = Profile(
                     self.graph.serialize(format="pretty-xml"))
             return True
-        except SAXParseException:
-            #malformed rdfa
-            raise
-        except Exception:
-            raise
-            #return False
-            #ConnectionError (we should put some "reason" field on the test@!!
+        except SAXParseException as e:
+            # malformed rdfa
+            raise e
+        except Exception as e:
+            raise e
+            # return False
+            # ConnectionError (we should put some "reason" field on the test@!!
 
     #XXX move here the SPARQL queries also???
 

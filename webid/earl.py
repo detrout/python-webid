@@ -88,8 +88,8 @@ class Parser(object):
                         if isinstance(o, URIRef) and OLD in o:
                             o = URIRef(o.replace(OLD, NEW))
                         context.add((s, p, o))
-                except Exception, e:
-                    #print e
+                except Exception as e:
+                    # print e
                     raise e
 
 
