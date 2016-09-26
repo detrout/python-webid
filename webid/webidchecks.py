@@ -65,8 +65,8 @@ class WebIDChecks(object):
 
     def _getOrderedTests(self):
         return sorted(filter(lambda x: getattr(x, 'test', False),
-            dict(inspect.getmembers(self)).values()),
-            key=lambda x: x.order)
+                             dict(inspect.getmembers(self)).values()),
+                      key=lambda x: x.order)
 
     @property
     def test_coverage(self):
@@ -84,7 +84,7 @@ class WebIDChecks(object):
         """
         #XXX get order???
         return self.earltests.difference(
-            set([x.__class__.__name__.replace('__', '') \
+            set([x.__class__.__name__.replace('__', '')
                 for x in self.tests]))
     # needed?
 
@@ -155,17 +155,16 @@ class WebIDChecks(object):
         """
         returns only checks that deal with certificate
         """
-        return [x for x in self.tests \
-            if not hasattr(x, 'foreach')]
+        return [x for x in self.tests if not hasattr(x, 'foreach')]
 
     @property
     def checks_only_uri(self):
         """
         returns the block of checks that deal with uri
         """
-        return [x for x in self.tests \
-                if hasattr(x, 'foreach') \
-                and 'uri' in x.foreach \
+        return [x for x in self.tests
+                if hasattr(x, 'foreach')
+                and 'uri' in x.foreach
                 and 'pubkey' not in x.foreach]
 
     @property
@@ -174,8 +173,8 @@ class WebIDChecks(object):
         returns the block of checks that deal with pubkeys
         in a given uri
         """
-        return [x for x in self.tests \
-                if hasattr(x, 'foreach') \
+        return [x for x in self.tests
+                if hasattr(x, 'foreach')
                 and 'pubkey' in x.foreach]
 
     @property
@@ -184,8 +183,8 @@ class WebIDChecks(object):
         returns the block of checks that deal with pubkeys
         in a given uri
         """
-        return [x for x in self.tests \
-                if hasattr(x, 'foreach') \
+        return [x for x in self.tests
+                if hasattr(x, 'foreach')
                 and 'profile' in x.foreach]
 
     def get_results(uri=None, pk=None):

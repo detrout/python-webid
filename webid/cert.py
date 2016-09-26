@@ -21,12 +21,9 @@ class Cert(Id):
     def __init__(self, certstr, *args, **kwargs):
         try:
             self.x509 = M2Crypto.X509.load_cert_string(certstr)
-            #XXX get a better regexp for this
-            self.b64der = certstr.replace(
-                        '-----BEGIN CERTIFICATE-----', '').\
-                        replace(
-                        '-----END CERTIFICATE-----', '').\
-                        replace('\n', '')
+            self.b64der = certstr.replace('-----BEGIN CERTIFICATE-----', '').\
+                          replace('-----END CERTIFICATE-----', '').\
+                          replace('\n', '')
         except:
             self.x509 = None
         self.pubkey = PublicKey(None, None)
@@ -49,7 +46,6 @@ class Cert(Id):
                 return None
 
     def get_pubkey(self):
-        #XXX clean
         if not self.x509:
             return None
         mm = str(self.x509.get_pubkey().get_modulus().lower())

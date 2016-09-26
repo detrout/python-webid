@@ -7,6 +7,7 @@ import sys as _sys
 from keyword import iskeyword as _iskeyword
 from operator import itemgetter as _itemgetter
 
+
 def namedtuple(typename, field_names, verbose=False):
     """Returns a new subclass of tuple with named fields.
 
@@ -34,11 +35,12 @@ def namedtuple(typename, field_names, verbose=False):
     # Parse and validate the field names.  Validation serves two purposes,
     # generating informative error messages and preventing template injection attacks.
     if isinstance(field_names, basestring):
-        field_names = field_names.replace(',', ' ').split() # names separated by whitespace and/or commas
+        # names separated by whitespace and/or commas
+        field_names = field_names.replace(',', ' ').split()
     field_names = tuple(map(str, field_names))
     for name in (typename,) + field_names:
-        if not all(c.isalnum() or c=='_' for c in name):
-            raise ValueError('Type names and field names can only contain alphanumeric characters and underscores: %r' % name)
+        if not all(c.isalnum() or c == '_' for c in name):
+            raise ValueError('Type names and field names can only contain alphanumeric characters and underscores: %r' % (name,))
         if _iskeyword(name):
             raise ValueError('Type names and field names cannot be a keyword: %r' % name)
         if name[0].isdigit():

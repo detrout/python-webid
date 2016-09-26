@@ -13,7 +13,7 @@ engine = create_engine('sqlite:///sniff.db', echo=False)
 Base = declarative_base(bind=engine)
 
 
-def createDB_and_session(Sess = sessionmaker()):
+def createDB_and_session(Sess=sessionmaker()):
     '''
         After importing the sniffer and mac_sniffer call this method to create the DB and
         fetch a session
@@ -44,6 +44,6 @@ def add_mac_address(mac_address, wheninseconds):
         device = session.query(mac_sniffer.Device).filter_by(mac=mac_address).one()
         device.update_last_seen(wheninseconds)
     except sqlalchemy.orm.exc.NoResultFound:
-        session.add(mac_sniffer.Device(MAC=mac_address,FIRST_SEEN=wheninseconds))
+        session.add(mac_sniffer.Device(MAC=mac_address, FIRST_SEEN=wheninseconds))
     finally:
         session.commit()

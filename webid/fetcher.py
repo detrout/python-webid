@@ -11,9 +11,9 @@ rdflib_major_ver = int(rdflib.__version__.split('.')[0])
 if rdflib_major_ver == 3:
     # this is for rdflib branch 3.x.x
     rdflib.plugin.register('sparql', rdflib.query.Processor,
-           'rdfextras.sparql.processor', 'Processor')
+                           'rdfextras.sparql.processor', 'Processor')
     rdflib.plugin.register('sparql', rdflib.query.Result,
-           'rdfextras.sparql.query', 'SPARQLQueryResult')
+                           'rdfextras.sparql.query', 'SPARQLQueryResult')
 
 from .serializers import Profile
 from .constants import FORMATS
@@ -88,13 +88,13 @@ class WebIDLoader(object):
         if accept_header:  # we got a preference on init.
             logger.debug('using preferred format %s' % preffmt)
             req = requests.get(self.uri,
-                verify=self.verify_server_cert,
-                headers={"accept": accept_header})
+                               verify=self.verify_server_cert,
+                               headers={"accept": accept_header})
         else:  # no accept header, go with default preferred fmts.
             logger.debug('using all understood formats')
             req = requests.get(self.uri,
-                verify=self.verify_server_cert,
-                headers={"accept": get_accept_header(UNDERSTOOD_FORMATS)})
+                               verify=self.verify_server_cert,
+                               headers={"accept": get_accept_header(UNDERSTOOD_FORMATS)})
         if req.ok:
             logger.debug('successful URI dereference for uri %s' % self.uri)
             ctype = req.headers.get('content-type', None)
@@ -130,8 +130,8 @@ class WebIDLoader(object):
         saves the content of a successful response into this instance,
         for later use.
         """
-        #XXX only for DEBUG, do not save whole req object!
-        #self.r = req
+        # XXX only for DEBUG, do not save whole req object!
+        # self.r = req
 
         self.rcontent = req.text
         self.rheaders = req.headers

@@ -14,16 +14,16 @@ WIT = "RelyingParty"
 WIT_FILENAME = "%s.n3" % WIT
 
 rdflib.plugin.register('sparql', rdflib.query.Processor,
-           'rdfextras.sparql.processor', 'Processor')
+                       'rdfextras.sparql.processor', 'Processor')
 rdflib.plugin.register('sparql', rdflib.query.Result,
-           'rdfextras.sparql.query', 'SPARQLQueryResult')
+                       'rdfextras.sparql.query', 'SPARQLQueryResult')
 
 # Namespaces declaration.
 # we're no longer using them. but we can need'em again :)
 
-#EARL = rdflib.Namespace("http://www.w3.org/ns/earl#")
-#DC = rdflib.Namespace("http://purl.org/dc/terms/")
-#SKOS = rdflib.Namespace("http://www.w3.org/2004/02/skos/core#")
+# EARL = rdflib.Namespace("http://www.w3.org/ns/earl#")
+# DC = rdflib.Namespace("http://purl.org/dc/terms/")
+# SKOS = rdflib.Namespace("http://www.w3.org/2004/02/skos/core#")
 
 logger = logging.getLogger()
 
@@ -51,21 +51,20 @@ class Parser(object):
         If not URI is given, it will fetch it from
         http://www.w3.org/2005/Incubator/webid/earl/RelyingParty.n3'
         """
-        #print 'parsing uri %s' % URI
         self._get_webid_earl(download=True, URI=URI)
 
     def _get_webid_earl(self, download=False, URI=None):
         if download:
             logger.debug('downloading spec!')
-            #print('downloading spec!')
+            # print('downloading spec!')
             URI = 'http://www.w3.org/2005/Incubator/webid/earl/RelyingParty.n3'
             r = requests.get(URI)
             _file = StringIO(r.content)
         else:
             _file = open(os.path.join(
                 os.path.dirname(__file__), 'data', WIT_FILENAME))
-            #XXX Get Timestamp fot the fetching.
-            #we need to write verificationTimestamp
+            # XXX Get Timestamp fot the fetching.
+            # we need to write verificationTimestamp
 
         self.g = rdflib.ConjunctiveGraph()
         self.g.parse(_file, format="n3")

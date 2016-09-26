@@ -590,10 +590,10 @@ class WebIDValidator(object):
             #TODO refactor all replaces into
             #a single regexp
             mod_lit = unicode(mod).replace(' ', '').\
-                    replace('\n', '').\
-                    replace('"', '').\
-                    replace('\t', '').\
-                    encode('ascii', 'ignore').lower()
+                      replace('\n', '').\
+                      replace('"', '').\
+                      replace('\t', '').\
+                      encode('ascii', 'ignore').lower()
             exp_int = int(unicode(exp))
             pubkey = PublicKey(mod=mod_lit, exp=exp_int)
             webidClaim = WebIDClaim(uri, pubkey)
@@ -621,7 +621,7 @@ class WebIDValidator(object):
             return False
 
     def _extract_webid_name(self, uri, sparql_query=None,
-            sparql_vars=None):
+                            sparql_vars=None):
         """
         returns a sparql query over the profile, containing
         fields useful for building a new local profile for
@@ -639,8 +639,7 @@ class WebIDValidator(object):
                 query = constants.NAME_SPARQL
                 #XXX get this vars names from
                 #constants too.
-                sparql_vars = ('uri', 'name', 'nick',
-                        'mbox')
+                sparql_vars = ('uri', 'name', 'nick', 'mbox')
             res = graph.query(query)
             #XXX FIXME!!!
             #Check that THE URI IS SAME AS

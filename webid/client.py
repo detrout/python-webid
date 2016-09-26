@@ -121,17 +121,17 @@ def do_pause():
 
 
 def try_all_certs(validator_name, validator_uri, onlyhead=False):
-    #only one cert by the moment :)
+    # only one cert by the moment :)
     for certsect in certs:
         cert = config.get(certsect, "cert", None)
         if cert:
             certfile = os.path.join(_default_dir, 'certs', cert)
             print(">>>>>>>")
             print("Requesting %s [%s]\nwith cert at %s" % (validator_name,
-                                                            validator_uri,
-                                                            certfile))
+                                                           validator_uri,
+                                                           certfile))
             do_connection(validator_uri, certfile, _format="rdf",
-                    onlyhead=onlyhead)
+                          onlyhead=onlyhead)
             # heck! scrape html??
             do_pause()
 
@@ -154,15 +154,15 @@ def get_validator_details(val):
 
 
 def try_all_formats():
-    #XXX cycle all formats
+    # XXX cycle all formats
     cert = get_first_cert()
     for validator_sect in validators:
         for _format in FORMATS:
             name, uri = get_validator_details(validator_sect)
             print(">>>>>>>")
             print("Requesting %s [%s]\nwith format %s" % (name,
-                                                           uri,
-                                                           _format))
+                                                          uri,
+                                                          _format))
             do_connection(uri, cert, _format=_format, onlyhead=True)
 
 
@@ -170,7 +170,7 @@ def try_all_validators(_format, certfile):
     for validator_sect in validators:
         name, uri = get_validator_details(validator_sect)
         do_connection(uri, certfile, _format=_format,
-                onlyhead=True)
+                      onlyhead=True)
         # heck! scrape html??
         # come'on, guys, let's play earl!!!
         do_pause()
@@ -179,5 +179,5 @@ def try_all_validators(_format, certfile):
 certsect = certs[0]
 cert = config.get(certsect, "cert", None)
 
-#try_all_validators(cert)
+# try_all_validators(cert)
 try_all_formats()

@@ -4,8 +4,8 @@ This code has been taken from http://code.activestate.com/recipes/576694/
 
 import collections
 
-class OrderedSet(collections.MutableSet):
 
+class OrderedSet(collections.MutableSet):
     def __init__(self, iterable=None):
         self.end = end = []
         end += [None, end, end]         # sentinel node for doubly linked list
