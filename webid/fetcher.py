@@ -5,6 +5,9 @@ import requests
 from six import StringIO
 from xml.sax import SAXParseException
 
+from .serializers import Profile
+from .constants import FORMATS
+
 import rdflib
 rdflib_major_ver = int(rdflib.__version__.split('.')[0])
 
@@ -14,9 +17,6 @@ if rdflib_major_ver == 3:
                            'rdfextras.sparql.processor', 'Processor')
     rdflib.plugin.register('sparql', rdflib.query.Result,
                            'rdfextras.sparql.query', 'SPARQLQueryResult')
-
-from .serializers import Profile
-from .constants import FORMATS
 
 #ch = logging.StreamHandler()
 #ch.setLevel(logging.DEBUG)
