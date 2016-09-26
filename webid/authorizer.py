@@ -74,7 +74,6 @@ class DirectTrust(object):
         """
         Loads the profile
         """
-        #print "profile:", profile.uri
         if not is_profile_reachable(profile):
             profile.get()
             if is_profile_reachable(profile):  # GET might not be able to fetch any data
@@ -252,10 +251,8 @@ class Trust(TransitiveTrust):
                     logger.info("DIRECT_FRIEND: Auth:%s  and Supp:%s has direct_friend:%s",
                                 self.auth_uri, self.supp_uri, common)
                     return True
-                    #retvalue = True
                 else:
                     self.supplicant_owners.remove(common)
-        #return retvalue
         return False
 
     def indirect_friends(self):

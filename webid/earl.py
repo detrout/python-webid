@@ -92,7 +92,6 @@ class Parser(object):
                     # print e
                     raise e
 
-
     def _get_testcases(self):
         testcases = self.g.query(TESTCASES)
         self.testcases = [{'test': test.partition("#")[2],

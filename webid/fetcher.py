@@ -18,16 +18,9 @@ if rdflib_major_ver == 3:
     rdflib.plugin.register('sparql', rdflib.query.Result,
                            'rdfextras.sparql.query', 'SPARQLQueryResult')
 
-#ch = logging.StreamHandler()
-#ch.setLevel(logging.DEBUG)
 logger = logging.getLogger(name=__name__)
-#logger.setLevel(logging.DEBUG)
-#logger.addHandler(ch)
-
 
 UNDERSTOOD_FORMATS = ('rdf', 'rdfa', 'turtle', 'html')
-#TODO leaving out turtle and n3 for now
-#have to see how should rdflib handle it
 UNDERSTOOD_CTYPES = tuple([FORMATS[f] for f in UNDERSTOOD_FORMATS])
 
 
